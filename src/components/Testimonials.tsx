@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 const testimonials = [
   {
     name: 'Rajendra Kumar',
     location: 'Mumbai, Maharashtra',
     text: 'Agaon Construction delivered our commercial complex exactly on time and completely within budget. Their tracking app gave me total peace of mind.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80'
+    role: 'Commercial Developer'
   },
   {
     name: 'Anjali Sharma',
     location: 'Delhi NCR',
     text: 'Building my dream home was stress-free thanks to Agaon. The 3D VR sessions before construction started helped us visualize every detail perfectly.',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80'
+    role: 'Private Estate Owner'
   },
   {
     name: 'Dr. Subramaniam',
     location: 'Bangalore, Karnataka',
     text: 'Their commitment to quality is unmatched. The 500+ point inspection reports we received at every milestone proved their dedication to absolute certainty.',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80'
+    role: 'Institutional Client'
   }
 ];
 
@@ -27,58 +27,58 @@ export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const next = () => setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  const prev = () => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section className="py-24 bg-[#07152E] relative overflow-hidden">
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#0D2248]/60 blur-[150px] rounded-full pointer-events-none" />
-      
-      <div className="max-w-4xl mx-auto px-6 md:px-12 relative z-10 text-center">
-        <Quote className="w-12 h-12 text-[#FF6B2C]/20 mx-auto mb-8" />
+    <section className="py-32 bg-[#F8F9FA] relative border-t border-[#07152E]/10 flex flex-col justify-center">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full flex flex-col md:flex-row justify-between">
         
-        <div className="h-[200px] relative">
+        {/* Editorial Info Left */}
+        <div className="md:w-1/3 mb-16 md:mb-0 flex flex-col justify-between">
+          <div>
+            <span className="text-[#FF6B2C] text-[10px] uppercase font-bold tracking-[0.3em] block mb-4">
+              Client Perspectives
+            </span>
+            <h2 className="font-display text-4xl text-[#07152E] font-bold tracking-tight mb-8">
+              Words from<br/>our partners.
+            </h2>
+          </div>
+          
+          <button 
+            onClick={next}
+            className="flex items-center space-x-4 text-[#07152E] group w-fit"
+          >
+            <span className="font-sans text-[10px] uppercase tracking-[0.2em] font-bold">Next Statement</span>
+            <div className="w-10 h-10 border border-[#07152E] flex items-center justify-center group-hover:bg-[#07152E] group-hover:text-white transition-colors duration-300 rounded-none">
+              <ChevronRight className="w-4 h-4" />
+            </div>
+          </button>
+        </div>
+
+        {/* Quote Right */}
+        <div className="md:w-3/5 min-h-[300px] relative">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.4 }}
-              className="absolute inset-0"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="absolute inset-0 flex flex-col"
             >
-              <p className="font-display text-2xl md:text-4xl text-white font-medium leading-tight mb-10">
-                "{testimonials[currentIndex].text}"
-              </p>
-              <div className="flex items-center justify-center space-x-4">
-                <img 
-                  src={testimonials[currentIndex].image} 
-                  alt={testimonials[currentIndex].name}
-                  referrerPolicy="no-referrer"
-                  className="w-12 h-12 rounded-full border-2 border-white/10"
-                />
-                <div className="text-left">
-                  <h4 className="font-sans font-bold text-white text-sm">{testimonials[currentIndex].name}</h4>
-                  <span className="font-mono text-[10px] text-[#FF6B2C] uppercase tracking-widest">{testimonials[currentIndex].location}</span>
-                </div>
+              <h3 className="font-display text-3xl md:text-5xl lg:text-5xl text-[#07152E] font-medium leading-[1.2] mb-12 flex-grow">
+                “{testimonials[currentIndex].text}”
+              </h3>
+              
+              <div className="flex flex-col border-t border-[#07152E]/10 pt-6">
+                <span className="font-display text-xl text-[#07152E] font-bold mb-1">{testimonials[currentIndex].name}</span>
+                <span className="font-sans text-[10px] text-[#07152E]/60 uppercase tracking-[0.2em]">
+                  {testimonials[currentIndex].role} — {testimonials[currentIndex].location}
+                </span>
               </div>
             </motion.div>
           </AnimatePresence>
         </div>
 
-        <div className="mt-16 flex justify-center space-x-4">
-          <button 
-            onClick={prev}
-            className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#FF6B2C] hover:border-[#FF6B2C] hover:text-white transition-all duration-300"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button 
-            onClick={next}
-            className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#FF6B2C] hover:border-[#FF6B2C] transition-all duration-300"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-        </div>
       </div>
     </section>
   );

@@ -1,68 +1,91 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Home, Building, PencilRuler, Component } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const services = [
   {
     title: 'Residential Construction',
-    description: 'Bespoke luxury estates and smart homes engineered for generational durability.',
-    icon: Home,
+    category: 'Architecture',
+    description: 'Bespoke luxury estates and smart homes engineered for generational durability. We view residential construction not merely as building shelters, but creating deeply personal, lasting environments.',
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
     delay: 0.1
   },
   {
-    title: 'Commercial Construction',
-    description: 'High-performance corporate assets, retail spaces, and intelligent office environments.',
-    icon: Building,
+    title: 'Commercial Build',
+    category: 'Infrastructure',
+    description: 'High-performance corporate assets, retail spaces, and intelligent office environments. Built strictly to schedule with uncompromising structural integrity and modern efficiency standards.',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
     delay: 0.2
   },
   {
     title: 'Facade Engineering',
-    description: 'Aerodynamic, multi-climate structural envelopes utilizing advanced kinetic glazing.',
-    icon: Component,
+    category: 'Exterior',
+    description: 'Aerodynamic, multi-climate structural envelopes utilizing advanced kinetic glazing. The skin of the structure defines both its aesthetic signature and its thermodynamic efficiency.',
+    image: 'https://images.unsplash.com/photo-1473172707857-f9e276582ab6?auto=format&fit=crop&w=1200&q=80',
     delay: 0.3
-  },
-  {
-    title: 'Interior Architecture',
-    description: 'Immersive, ergonomically optimized internal environments with premium finishes.',
-    icon: PencilRuler,
-    delay: 0.4
   }
 ];
 
 export default function Services() {
   return (
-    <section className="py-24 bg-[#0D2248]/40 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:40px_40px]" />
-      
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <div className="text-center mb-16">
-          <span className="text-[#FF6B2C] text-xs font-bold uppercase tracking-[0.3em] block mb-4">
-            Our Capabilities
-          </span>
-          <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tight text-white mb-6">
-            Comprehensive Construction Solutions
-          </h2>
+    <section className="py-32 bg-[#F8F9FA] relative">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
+          <div className="max-w-2xl">
+            <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-[#07152E] mb-6">
+              Sectors of Expertise.
+            </h2>
+            <p className="text-[#07152E]/70 font-sans text-lg font-light leading-relaxed">
+              We bring software-level precision to physical structures. Our divisions operate with extreme accountability across three core construction disciplines.
+            </p>
+          </div>
+          <button className="flex items-center space-x-2 text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-[#07152E] border-b border-[#07152E] pb-1 hover:text-[#FF6B2C] hover:border-[#FF6B2C] transition-colors">
+            <span>View All Services</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="space-y-32">
           {services.map((service, idx) => (
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: service.delay }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: service.delay }}
               key={idx}
-              className="group bg-[#07152E]/60 backdrop-blur-md p-8 rounded-xl border border-white/5 hover:border-[#FF6B2C]/50 hover:bg-[#07152E] transition-all duration-300 cursor-pointer"
+              className={`flex flex-col ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-24 items-center`}
             >
-              <div className="w-12 h-12 bg-white/5 group-hover:bg-[#FF6B2C]/10 rounded-lg flex items-center justify-center mb-6 transition-colors duration-300">
-                <service.icon className="w-6 h-6 text-white group-hover:text-[#FF6B2C] transition-colors duration-300" />
+              {/* Image Block */}
+              <div className="w-full lg:w-1/2 overflow-hidden bg-[#07152E] relative">
+                <div className="aspect-[4/5] overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 hover:scale-105 transition-all duration-1000 ease-out"
+                  />
+                </div>
               </div>
-              <h3 className="font-sans font-bold text-lg text-white mb-3">
-                {service.title}
-              </h3>
-              <p className="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors duration-300">
-                {service.description}
-              </p>
+
+              {/* Text Content */}
+              <div className="w-full lg:w-1/2 flex flex-col justify-center">
+                <span className="text-[#FF6B2C] font-mono text-[10px] uppercase tracking-[0.2em] font-bold mb-6 block">
+                  0{idx + 1} // {service.category}
+                </span>
+                <h3 className="font-display text-4xl lg:text-5xl font-bold text-[#07152E] mb-6">
+                  {service.title}
+                </h3>
+                <p className="text-[#07152E]/70 text-base lg:text-lg font-light leading-relaxed mb-10 max-w-md">
+                  {service.description}
+                </p>
+                
+                <button className="self-start relative group pb-2">
+                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] font-bold text-[#07152E] group-hover:text-[#FF6B2C] transition-colors">Explore Division</span>
+                  <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#07152E]/20">
+                    <div className="absolute top-0 left-0 h-full bg-[#FF6B2C] w-0 group-hover:w-full transition-all duration-500 ease-out" />
+                  </div>
+                </button>
+              </div>
             </motion.div>
           ))}
         </div>

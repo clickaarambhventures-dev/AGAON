@@ -12,9 +12,7 @@ import Contact from './pages/Contact';
 export default function App() {
   return (
     <Router>
-      <div className="bg-[#07152E] text-white font-sans antialiased overflow-x-hidden min-h-screen relative flex flex-col">
-        {/* Geometric Pattern Overlay */}
-        <div className="fixed inset-0 z-0 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
+      <div className="bg-[#F8F9FA] text-[#07152E] font-sans antialiased overflow-x-hidden min-h-screen relative flex flex-col">
         <div className="relative z-10 w-full flex flex-col min-h-screen">
           <Header />
           <main className="flex-grow">

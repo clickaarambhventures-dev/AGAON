@@ -1,105 +1,123 @@
 import React from 'react';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
 
 export default function Contact() {
   return (
-    <div className="pt-20">
-      <div className="py-24 bg-[#0D2248]/30 max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16">
-        
-        {/* Left Side */}
-        <div className="space-y-12">
-          <div>
-            <h1 className="font-display text-5xl md:text-7xl font-bold text-white tracking-tight mb-6">Let's Build Something Great.</h1>
-            <p className="text-slate-400 text-sm leading-relaxed">Reach out to our corporate teams for bespoke quotes, site visits, and comprehensive feasibility analysis.</p>
-          </div>
+    <div className="pt-24 bg-[#07152E] text-white min-h-screen">
+      
+      {/* Header */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 mb-12 border-b border-white/10">
+        <span className="text-[#FF6B2C] text-[10px] font-bold uppercase tracking-[0.3em] block mb-6">
+          Initiate Contact
+        </span>
+        <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] max-w-3xl mb-12">
+          Commence<br/>
+          <span className="font-serif italic font-medium text-white/50">Engagement.</span>
+        </h1>
+        <p className="text-white/60 text-lg max-w-xl font-light leading-relaxed">
+          Connect with our corporate syndicates for bespoke proposals, structural analysis, and feasibility models.
+        </p>
+      </div>
 
-          <div className="space-y-8">
-            <div className="flex items-start">
-              <div className="w-10 h-10 bg-white/5 border border-white/10 rounded flex items-center justify-center mr-4 shrink-0">
-                <Phone className="w-4 h-4 text-[#FF6B2C]" />
-              </div>
-              <div>
-                <h4 className="text-[10px] font-mono text-slate-500 uppercase tracking-widest font-bold">Phone Number</h4>
-                <p className="text-white font-sans text-sm mt-1">+91 (022) 4800-AGAON</p>
-              </div>
-            </div>
-
-            <div className="flex items-start">
-              <div className="w-10 h-10 bg-white/5 border border-white/10 rounded flex items-center justify-center mr-4 shrink-0">
-                <Mail className="w-4 h-4 text-[#FF6B2C]" />
-              </div>
-              <div>
-                <h4 className="text-[10px] font-mono text-slate-500 uppercase tracking-widest font-bold">Email Address</h4>
-                <p className="text-white font-sans text-sm mt-1">proposals@agaon.co.in</p>
-              </div>
-            </div>
-
-            <div className="flex items-start">
-              <div className="w-10 h-10 bg-white/5 border border-white/10 rounded flex items-center justify-center mr-4 shrink-0">
-                <MapPin className="w-4 h-4 text-[#FF6B2C]" />
-              </div>
-              <div>
-                <h4 className="text-[10px] font-mono text-slate-500 uppercase tracking-widest font-bold">Office Address</h4>
-                <p className="text-white font-sans text-sm mt-1">Level 42, Agaon Tower, BKC, Mumbai 400051</p>
-              </div>
-            </div>
-
-            <div className="flex items-start">
-              <div className="w-10 h-10 bg-white/5 border border-white/10 rounded flex items-center justify-center mr-4 shrink-0">
-                <Clock className="w-4 h-4 text-[#FF6B2C]" />
-              </div>
-              <div>
-                <h4 className="text-[10px] font-mono text-slate-500 uppercase tracking-widest font-bold">Business Hours</h4>
-                <p className="text-white font-sans text-sm mt-1">Monday - Friday: 9:00 AM - 7:00 PM</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="pt-8 border-t border-white/10">
-            <button className="px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/20 text-white font-sans font-bold text-xs uppercase tracking-widest rounded-sm transition-all shadow-md w-full sm:w-auto text-center">
-              Download Home Construction Guide
-            </button>
-          </div>
-        </div>
-
-        {/* Right Side Form */}
-        <div className="bg-[#07152E]/80 backdrop-blur-md border border-white/10 p-8 md:p-12 rounded-2xl shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#FF6B2C]/5 blur-3xl rounded-full" />
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
           
-          <h3 className="font-display text-2xl font-bold text-white mb-8 relative z-10">Submit Inquiry</h3>
-          
-          <form className="space-y-6 relative z-10" onSubmit={(e) => e.preventDefault()}>
-            <div className="space-y-2">
-              <label className="text-[10px] font-mono text-slate-400 uppercase tracking-widest font-bold">Full Name</label>
-              <input type="text" className="w-full bg-[#0D2248]/50 border border-white/10 rounded-lg py-3 px-4 text-white focus:outline-none focus:border-[#FF6B2C] transition-colors" placeholder="John Doe" />
+          {/* Left Side Info */}
+          <div className="lg:col-span-5 space-y-16">
+            
+            <div className="space-y-12">
+              <div className="group">
+                <span className="font-sans text-[10px] text-white/40 tracking-[0.2em] uppercase font-bold block mb-4 flex items-center">
+                  <MapPin className="w-3 h-3 mr-2" /> Global Headquarters
+                </span>
+                <p className="font-display text-2xl group-hover:text-[#FF6B2C] transition-colors cursor-pointer">
+                  Level 42, AGAON Tower<br/>
+                  BKC, Mumbai<br/>
+                  Maharashtra 400051
+                </p>
+              </div>
+
+              <div className="group">
+                <span className="font-sans text-[10px] text-white/40 tracking-[0.2em] uppercase font-bold block mb-4 flex items-center">
+                  <Phone className="w-3 h-3 mr-2" /> Direct Voice
+                </span>
+                <p className="font-display text-2xl group-hover:text-[#FF6B2C] transition-colors cursor-pointer">
+                  +91 (022) 4800 2424
+                </p>
+              </div>
+
+              <div className="group">
+                <span className="font-sans text-[10px] text-white/40 tracking-[0.2em] uppercase font-bold block mb-4 flex items-center">
+                  <Mail className="w-3 h-3 mr-2" /> Digital Inquiries
+                </span>
+                <p className="font-display text-2xl group-hover:text-[#FF6B2C] transition-colors cursor-pointer">
+                  proposals@agaon.co.in
+                </p>
+              </div>
             </div>
 
-            <div className="space-y-2">
-              <label className="text-[10px] font-mono text-slate-400 uppercase tracking-widest font-bold">Phone Number</label>
-              <input type="tel" className="w-full bg-[#0D2248]/50 border border-white/10 rounded-lg py-3 px-4 text-white focus:outline-none focus:border-[#FF6B2C] transition-colors" placeholder="+91 98765 43210" />
+            <div className="p-8 border border-white/10 bg-white/5">
+              <h4 className="font-sans text-[10px] text-white/50 tracking-[0.2em] uppercase font-bold block mb-4">Operations Status</h4>
+              <div className="flex items-center space-x-3 mb-2">
+                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                <span className="font-display text-lg text-white">Active</span>
+              </div>
+              <p className="text-white/50 text-xs font-sans tracking-wide">Business Hours: 09:00 — 19:00 IST</p>
             </div>
 
-            <div className="space-y-2">
-              <label className="text-[10px] font-mono text-slate-400 uppercase tracking-widest font-bold">Project Type</label>
-              <select className="w-full bg-[#0D2248]/50 border border-white/10 rounded-lg py-3 px-4 text-white appearance-none focus:outline-none focus:border-[#FF6B2C] transition-colors">
-                <option>Residential Construction</option>
-                <option>Commercial Tower</option>
-                <option>Facade Engineering</option>
-                <option>Interior Architecture</option>
-              </select>
-            </div>
+          </div>
 
-            <div className="space-y-2">
-              <label className="text-[10px] font-mono text-slate-400 uppercase tracking-widest font-bold">Message</label>
-              <textarea rows={4} className="w-full bg-[#0D2248]/50 border border-white/10 rounded-lg py-3 px-4 text-white focus:outline-none focus:border-[#FF6B2C] transition-colors" placeholder="Tell us about your project..."></textarea>
-            </div>
+          {/* Right Side Form */}
+          <div className="lg:col-span-7">
+            <h3 className="font-sans text-[10px] text-white/40 tracking-[0.2em] uppercase font-bold block mb-12">Encrypted Submission</h3>
+            
+            <form className="space-y-10" onSubmit={(e) => e.preventDefault()}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div className="relative group">
+                  <input type="text" id="name" required className="w-full bg-transparent border-b border-white/20 pb-4 text-white font-sans text-sm focus:outline-none focus:border-[#FF6B2C] transition-colors peer placeholder-transparent" placeholder="Full Name" />
+                  <label htmlFor="name" className="absolute left-0 top-0 text-white/40 font-sans text-[10px] uppercase tracking-[0.2em] transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-0 peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-[#FF6B2C] pointer-events-none">
+                    Identified Entity Name
+                  </label>
+                </div>
 
-            <button type="submit" className="w-full bg-[#FF6B2C] hover:bg-white hover:text-[#07152E] text-white py-4 rounded-sm font-sans font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-[0_4px_20px_rgba(255,107,44,0.3)] hover:shadow-[0_4px_20px_rgba(255,255,255,0.3)] mt-4">
-              Submit Inquiry
-            </button>
-          </form>
+                <div className="relative group">
+                  <input type="tel" id="phone" required className="w-full bg-transparent border-b border-white/20 pb-4 text-white font-sans text-sm focus:outline-none focus:border-[#FF6B2C] transition-colors peer placeholder-transparent" placeholder="Phone Number" />
+                  <label htmlFor="phone" className="absolute left-0 top-0 text-white/40 font-sans text-[10px] uppercase tracking-[0.2em] transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-0 peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-[#FF6B2C] pointer-events-none">
+                    Telephonic Contact
+                  </label>
+                </div>
+              </div>
+
+              <div className="relative group">
+                <select id="type" className="w-full bg-transparent border-b border-white/20 pb-4 text-white font-sans text-sm focus:outline-none focus:border-[#FF6B2C] transition-colors appearance-none cursor-pointer rounded-none">
+                  <option value="" className="bg-[#07152E]">Select Requirement Profile</option>
+                  <option value="res" className="bg-[#07152E]">Residential Asset Development</option>
+                  <option value="com" className="bg-[#07152E]">Commercial Infrastructure</option>
+                  <option value="fac" className="bg-[#07152E]">Kinetic Facade Engineering</option>
+                  <option value="int" className="bg-[#07152E]">Interior Architecture Systems</option>
+                </select>
+                <div className="absolute right-0 top-0 pointer-events-none">
+                  <svg className="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+              </div>
+
+              <div className="relative group mt-16 pt-8">
+                <textarea id="message" rows={4} required className="w-full bg-transparent border-b border-white/20 pb-4 text-white font-sans text-sm focus:outline-none focus:border-[#FF6B2C] transition-colors peer placeholder-transparent resize-none" placeholder="Message"></textarea>
+                <label htmlFor="message" className="absolute left-0 top-8 text-white/40 font-sans text-[10px] uppercase tracking-[0.2em] transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-8 peer-focus:top-0 peer-focus:text-[10px] peer-focus:text-[#FF6B2C] pointer-events-none">
+                  Detailed Operational Requirement
+                </label>
+              </div>
+
+              <div className="pt-8 text-right">
+                <button type="submit" className="px-10 py-5 bg-white text-[#07152E] flex items-center justify-between ml-auto hover:bg-[#FF6B2C] hover:text-white transition-colors group">
+                  <span className="font-sans font-bold text-[10px] uppercase tracking-[0.2em] mr-8">Transmit Packet</span>
+                  <ArrowRight className="w-4 h-4 text-[#07152E] group-hover:text-white" strokeWidth={1.5} />
+                </button>
+              </div>
+            </form>
+          </div>
+
         </div>
-
       </div>
     </div>
   );

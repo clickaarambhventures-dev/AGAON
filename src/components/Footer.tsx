@@ -1,65 +1,143 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Footer() {
+  const navigate = useNavigate();
+
+  const handleNavigate = (path: string) => {
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="bg-[#07152E] border-t border-white/10 pt-20 pb-12 relative z-10">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-16">
+    <footer className="bg-[#07152E] pt-32 pb-12 relative z-10 w-full overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col h-full">
+        
+        {/* Top Massive Typography */}
+        <div className="mb-24 md:mb-32">
+          <h2 className="font-display text-5xl md:text-[7rem] lg:text-[10rem] font-bold text-white tracking-tighter leading-none mb-6">
+            AGAON
+          </h2>
+          <div className="w-full h-[1px] bg-white/20" />
+        </div>
+
+        {/* Middle Links */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 lg:gap-24 mb-24 md:mb-32">
           
-          <div className="col-span-2 space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-[#FF6B2C] flex items-center justify-center rounded-sm font-bold text-[#07152E]">
-                A
-              </div>
-              <span className="text-xl font-semibold tracking-widest uppercase text-white">
-                Agaon <span className="font-light opacity-60">Construction</span>
-              </span>
+          <div className="col-span-2 md:col-span-1 space-y-8">
+            <h4 className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#FF6B2C] font-bold">Office</h4>
+            <div className="text-white/60 font-sans text-sm leading-relaxed">
+              Level 42, Signature Tower,<br />
+              BKC, Mumbai 400051<br />
+              India
             </div>
-            <p className="text-slate-400 text-sm max-w-sm leading-relaxed">
-              Engineering Your Vision. Delivering Absolute Certainty. The smart way to build premium generational spaces.
-            </p>
+            <div className="text-white font-sans text-sm tracking-wide">
+              info@agaonconstruction.in
+            </div>
           </div>
 
           <div>
-            <h4 className="font-mono text-[10px] uppercase tracking-widest text-[#FF6B2C] font-bold mb-6">Company</h4>
-            <ul className="space-y-4 text-sm text-slate-300">
-              <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Leadership</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Press</a></li>
+            <h4 className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#FF6B2C] font-bold mb-8">Navigation</h4>
+            <ul className="space-y-4 font-sans text-sm text-white/60">
+              <li>
+                <button onClick={() => handleNavigate('/about')} className="hover:text-white transition-colors cursor-pointer text-left">
+                  Firm Profile
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNavigate('/about')} className="hover:text-white transition-colors cursor-pointer text-left">
+                  Executive Team
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNavigate('/portfolio')} className="hover:text-white transition-colors cursor-pointer text-left">
+                  Our Portfolio
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNavigate('/contact')} className="hover:text-white transition-colors cursor-pointer text-left">
+                  Join Us
+                </button>
+              </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-mono text-[10px] uppercase tracking-widest text-[#FF6B2C] font-bold mb-6">Services</h4>
-            <ul className="space-y-4 text-sm text-slate-300">
-              <li><a href="#" className="hover:text-white transition-colors">Residential Construction</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Commercial Towers</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Facade Engineering</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Interior Architecture</a></li>
+            <h4 className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#FF6B2C] font-bold mb-8">Disciplines</h4>
+            <ul className="space-y-4 font-sans text-sm text-white/60">
+              <li>
+                <button onClick={() => handleNavigate('/services')} className="hover:text-white transition-colors cursor-pointer text-left">
+                  Residential
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNavigate('/services')} className="hover:text-white transition-colors cursor-pointer text-left">
+                  Commercial
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNavigate('/services')} className="hover:text-white transition-colors cursor-pointer text-left">
+                  Facades
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNavigate('/services')} className="hover:text-white transition-colors cursor-pointer text-left">
+                  Interiors
+                </button>
+              </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-mono text-[10px] uppercase tracking-widest text-[#FF6B2C] font-bold mb-6">Resources</h4>
-            <ul className="space-y-4 text-sm text-slate-300">
-              <li><a href="#" className="hover:text-white transition-colors">Cost Estimator</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Quality Standards</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">VR Experiences</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+            <h4 className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#FF6B2C] font-bold mb-8">Tools</h4>
+            <ul className="space-y-4 font-sans text-sm text-white/60">
+              <li>
+                <button onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  // This opens the portal modal on Header since Header is global
+                  const portalBtn = document.querySelector('button:contains("Client Portal")') as HTMLButtonElement;
+                  if (portalBtn) {
+                    portalBtn.click();
+                  } else {
+                    const buttons = Array.from(document.querySelectorAll('button'));
+                    const target = buttons.find(b => b.textContent?.includes('Client Portal'));
+                    if (target) target.click();
+                  }
+                }} className="hover:text-white transition-colors cursor-pointer text-left">
+                  Client Portal Login
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNavigate('/estimator')} className="hover:text-white transition-colors cursor-pointer text-left">
+                  Cost Estimator
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNavigate('/about')} className="hover:text-white transition-colors cursor-pointer text-left">
+                  Quality Control Manual
+                </button>
+              </li>
             </ul>
           </div>
 
         </div>
 
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-slate-500">
-          <p>&copy; 2026 Agaon Construction. All Rights Reserved.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-white transition-colors">Social Media</a>
+        {/* Bottom Legal */}
+        <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 font-sans text-[10px] uppercase tracking-[0.2em] text-white/40">
+          <p>&copy; 2026 AGAON CORP. ALL RIGHTS RESERVED.</p>
+          <div className="flex gap-8">
+            <button onClick={() => handleNavigate('/about')} className="hover:text-white transition-colors cursor-pointer">
+              Privacy
+            </button>
+            <button onClick={() => handleNavigate('/about')} className="hover:text-white transition-colors cursor-pointer">
+              Legal Terms
+            </button>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+              LinkedIn
+            </a>
           </div>
         </div>
+
       </div>
     </footer>
   );

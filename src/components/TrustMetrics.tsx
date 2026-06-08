@@ -10,9 +10,9 @@ const metrics = [
 
 export default function TrustMetrics() {
   return (
-    <section className="py-16 bg-[#07152E] border-y border-white/10 relative z-10">
+    <section className="py-20 bg-white border-y border-[#07152E]/10 relative z-10">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-white/10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:divide-x divide-[#07152E]/10">
           {metrics.map((metric, idx) => (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -20,12 +20,12 @@ export default function TrustMetrics() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               key={idx}
-              className={`flex flex-col items-center justify-center text-center ${idx === 0 ? '' : 'pl-8'}`}
+              className={`flex flex-col items-center justify-center text-center ${idx % 2 !== 0 || idx > 0 ? 'md:pl-8' : ''}`}
             >
-              <span className="font-display text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-white to-white/60 mb-2">
+              <span className="font-display text-4xl md:text-5xl font-bold text-[#07152E] mb-3">
                 {metric.value}
               </span>
-              <span className="font-mono text-[10px] text-[#FF6B2C] uppercase tracking-widest font-bold">
+              <span className="font-sans text-[10px] text-[#07152E]/50 uppercase tracking-[0.2em] font-medium">
                 {metric.label}
               </span>
             </motion.div>

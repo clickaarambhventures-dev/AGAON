@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { MapPin, Calendar, Layers, ExternalLink } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const portfolioData = [
   {
@@ -69,79 +69,83 @@ export default function Portfolio() {
     : portfolioData.filter(p => p.category === activeFilter);
 
   return (
-    <div className="pt-20">
-      <div className="py-24 text-center">
-        <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">Execution Portfolio</h1>
-        <p className="text-slate-400 text-sm max-w-2xl mx-auto">Explore our gallery of completed structural assets across various sectors.</p>
+    <div className="pt-24 bg-[#F8F9FA] min-h-screen">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-24">
         
-        {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-4 mt-12">
-          {filters.map(f => (
-            <button
-              key={f}
-              onClick={() => setActiveFilter(f)}
-              className={`px-6 py-2 rounded-full font-mono text-[10px] uppercase tracking-widest font-bold transition-all ${
-                activeFilter === f 
-                  ? 'bg-[#FF6B2C] text-white' 
-                  : 'bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white'
-              }`}
-            >
-              {f}
-            </button>
-          ))}
+        {/* Header */}
+        <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+          <div className="max-w-2xl">
+            <span className="text-[#FF6B2C] text-[10px] font-bold uppercase tracking-[0.3em] block mb-6">
+              Our Legacy
+            </span>
+            <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-[#07152E] tracking-tight leading-[1.05]">
+              Execution<br/>
+              <span className="font-serif italic font-medium text-[#07152E]/50">Portfolio.</span>
+            </h1>
+          </div>
+          
+          <div className="flex flex-wrap gap-x-8 gap-y-4">
+            {filters.map(f => (
+              <button
+                key={f}
+                onClick={() => setActiveFilter(f)}
+                className={`text-[10px] uppercase font-bold tracking-[0.2em] pb-1 border-b transition-all duration-300 cursor-pointer ${
+                  activeFilter === f 
+                    ? 'border-[#07152E] text-[#07152E]' 
+                    : 'border-transparent text-[#07152E]/40 hover:text-[#07152E]/70'
+                }`}
+              >
+                {f}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pb-32">
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Gallery */}
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24">
           <AnimatePresence>
             {filteredProjects.map((project) => (
               <motion.div
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.5 }}
                 key={project.id}
-                className="group relative bg-[#0D2248]/40 border border-white/5 rounded-2xl overflow-hidden cursor-pointer hover:border-[#FF6B2C]/30 transition-colors"
+                className="group cursor-pointer flex flex-col"
               >
                 {/* Image */}
-                <div className="aspect-[4/3] overflow-hidden relative">
+                <div className="aspect-[3/4] overflow-hidden mb-8 relative">
                   <img 
                     src={project.image} 
                     alt={project.name} 
                     referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1.5s] ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#07152E] via-transparent to-transparent opacity-90" />
-                  <div className="absolute top-4 left-4 bg-[#FF6B2C] text-white font-mono text-[9px] uppercase tracking-widest px-3 py-1 rounded-sm font-bold">
-                    {project.category}
-                  </div>
                 </div>
 
                 {/* Details */}
-                <div className="p-6">
-                  <h3 className="font-display text-xl font-bold text-white mb-4 group-hover:text-[#FF6B2C] transition-colors">{project.name}</h3>
-                  
-                  <div className="space-y-3">
-                    <div className="flex items-center text-xs text-slate-400 font-mono">
-                      <MapPin className="w-3.5 h-3.5 mr-2 text-slate-500" />
+                <div className="flex flex-col flex-grow">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#07152E] font-bold">
+                      {project.category}
+                    </span>
+                    <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#07152E]/50">
                       {project.location}
+                    </span>
+                  </div>
+                  
+                  <h3 className="font-display text-3xl font-bold text-[#07152E] mb-6 group-hover:text-[#FF6B2C] transition-colors">{project.name}</h3>
+                  
+                  <div className="mt-auto border-t border-[#07152E]/10 pt-4 flex items-center justify-between">
+                    <div>
+                      <span className="block font-sans text-[10px] text-[#07152E]/50 tracking-[0.2em] uppercase mb-1">Scale</span>
+                      <span className="block font-display text-[#07152E]">{project.area}</span>
                     </div>
-                    <div className="flex items-center text-xs text-slate-400 font-mono">
-                      <Layers className="w-3.5 h-3.5 mr-2 text-slate-500" />
-                      {project.area}
-                    </div>
-                    <div className="flex items-center text-xs text-slate-400 font-mono">
-                      <Calendar className="w-3.5 h-3.5 mr-2 text-slate-500" />
-                      {project.duration}
+                    <div className="w-8 h-8 rounded-full border border-[#07152E]/20 flex items-center justify-center group-hover:bg-[#07152E] group-hover:text-white text-[#07152E] transition-colors">
+                      <ArrowRight className="w-3 h-3" />
                     </div>
                   </div>
-                </div>
-
-                {/* Hover overlay icon */}
-                <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-md w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <ExternalLink className="w-4 h-4 text-white" />
                 </div>
               </motion.div>
             ))}
