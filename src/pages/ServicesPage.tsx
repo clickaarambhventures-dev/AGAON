@@ -1,143 +1,178 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { Check } from 'lucide-react';
 
-const sections = [
+const services = [
   {
-    id: 'residential',
-    title: 'Residential Architecture',
-    subtitle: 'Bespoke Luxury Homes & Privileged Estates',
-    description: 'We construct highly personalized, generational residential assets. From vast suburban estates to ultra-modern smart homes, our residential structures are built to exceed international quality standards with premium finishes and robust underlying engineering.',
-    features: ['Vastu Compliant Layouts', 'Smart Home Integration', 'Energy Efficient Envelopes', 'Premium Imported Finishes'],
-    deliverables: 'Turnkey architectural delivery including custom millwork, lighting, HVAC, and landscape integration.',
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
-    reverse: false
+    number: '01',
+    title: 'Turnkey Residential Construction',
+    description: 'Foundation-to-finish home building. We handle everything from soil testing and architectural design to brickwork and final coat of paint.',
+    features: [
+      'End-to-end management',
+      'IS-Code compliant materials',
+      'Timely Handover Guarantee'
+    ],
+    image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=1200',
+    imageLeft: true
   },
   {
-    id: 'commercial',
-    title: 'Commercial Infrastructure',
-    subtitle: 'High-Performance Corporate Assets',
-    description: 'Complex commercial projects demand absolute adherence to timelines and specialized civil engineering. We deliver sustainable, tech-integrated office parks, retail centers, and high-rise structures optimized for modern enterprise use cases.',
-    features: ['Grade-A Technical Specs', 'Post-Tension Slabs', 'High-speed Elevators', 'Advanced Fire Suppression Base'],
-    deliverables: 'Core & Shell or complete fit-out delivery with LEED certification compliance.',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
-    reverse: true
+    number: '02',
+    title: 'Commercial & Institutional',
+    description: 'Scalable construction solutions for clinics, coaching institutes, schools, and corporate offices ensuring compliance with municipal codes.',
+    features: [
+      'End-to-end management',
+      'IS-Code compliant materials',
+      'Timely Handover Guarantee'
+    ],
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200',
+    imageLeft: false
   },
   {
-    id: 'facade',
+    number: '03',
     title: 'Facade Engineering',
-    subtitle: 'High-Performance Structural Envelopes',
-    description: 'The exterior envelope is the critical interface between the environment and the structure. We design and install advanced kinetic glazing, ventilated facades, and energy-efficient skins that define the aesthetic and performative qualities of the building.',
-    features: ['Unitized Glazing Systems', 'Thermal Break Technology', 'Acoustic Insulation', 'Parametric Designs'],
-    deliverables: 'End-to-end design, load testing, fabrication logistics, and site installation of the complete building skin.',
-    image: 'https://images.unsplash.com/photo-1473172707857-f9e276582ab6?auto=format&fit=crop&w=1200&q=80',
-    reverse: false
+    description: 'Specialized exterior treatments, structural glazing, and ACP cladding that defines your building\'s identity in the skyline.',
+    features: [
+      'End-to-end management',
+      'IS-Code compliant materials',
+      'Timely Handover Guarantee'
+    ],
+    image: 'https://images.unsplash.com/photo-1554435493-93422e8220c8?auto=format&fit=crop&q=80&w=1200',
+    imageLeft: true
   },
   {
-    id: 'interior',
-    title: 'Interior Spatial Systems',
-    subtitle: 'Immersive Spatial Ecosystems',
-    description: 'Going beyond basic fit-outs, our interior architecture division harmonizes structural integrity with ergonomic design. We craft interior spaces that elevate human experience through meticulous material selection and layout acoustics.',
-    features: ['Custom Acoustic Paneling', 'Bespoke Millwork', 'Integrated Automation', 'Curated Lighting Systems'],
-    deliverables: 'Fully integrated, move-in ready interior spaces executed to millimeter precision matching exact 3D renders.',
-    image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80',
-    reverse: true
+    number: '04',
+    title: 'Interior Architecture',
+    description: 'Custom woodwork, advanced lighting planning, and spatial design that perfectly aligns with structural realities.',
+    features: [
+      'End-to-end management',
+      'IS-Code compliant materials',
+      'Timely Handover Guarantee'
+    ],
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1200',
+    imageLeft: false
   }
 ];
 
 export default function ServicesPage() {
   return (
-    <div className="pt-24 bg-[#07152E] text-white min-h-screen">
-      
-      {/* Header */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 mb-12">
-        <span className="text-[#FF6B2C] text-[10px] font-bold uppercase tracking-[0.3em] block mb-6">
-          Divisions
-        </span>
-        <h1 className="font-display text-4xl md:text-6xl font-bold tracking-tight leading-[1.05] max-w-2xl mb-12">
-          Comprehensive<br/>
-          <span className="font-serif italic font-medium text-white/50">Expertise.</span>
-        </h1>
-        <p className="text-white/60 text-lg max-w-xl font-light leading-relaxed">
-          Full-spectrum architectural execution covering every phase of development from foundational civil work to bespoke interior finishes.
-        </p>
-      </div>
+    <div className="pt-24 bg-gradient-to-b from-[#f8fafc] to-white min-h-screen relative overflow-hidden">
+      {/* Subtle background luxury texturing */}
+      <div 
+        className="absolute inset-0 z-0 pointer-events-none opacity-[0.02]"
+        style={{
+          backgroundImage: `
+            linear-gradient(#07152E 1px, transparent 1px),
+            linear-gradient(90deg, #07152E 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px',
+        }}
+      />
 
-      {/* Services Loop */}
-      <div className="flex flex-col space-y-0">
-        {sections.map((section, idx) => (
-          <section key={section.id} className="relative w-full overflow-hidden border-t border-white/10 group">
-            
-            {/* Split Layout */}
-            <div className="flex flex-col lg:flex-row min-h-[80vh]">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+        
+        {/* Header Section */}
+        <header className="py-20 md:py-28 max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex items-center space-x-3 mb-6"
+          >
+            <div className="w-12 h-[1px] bg-[#FF6B2C]" />
+            <span className="text-[#FF6B2C] text-xs font-bold uppercase tracking-[0.2em]">OUR DISCIPLINES</span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+            className="font-display text-5xl md:text-7xl font-bold tracking-tight text-[#07152E] leading-[1.1] mb-10"
+          >
+            Our Services
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            className="font-sans text-xl md:text-2xl text-[#07152E]/80 font-light leading-relaxed max-w-3xl"
+          >
+            Enterprise-grade execution tailored for your specific project needs. We provide full-stack construction solutions.
+          </motion.p>
+        </header>
+
+        {/* Services Iterations */}
+        <div className="flex flex-col space-y-32 md:space-y-48 pb-32">
+          {services.map((service, idx) => (
+            <div 
+              key={service.number}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center"
+            >
               
-              {/* Text Area */}
-              <div className={`w-full lg:w-[45%] p-10 md:p-24 flex flex-col justify-center order-2 ${section.reverse ? 'lg:order-2 lg:border-l border-white/10' : 'lg:order-1 lg:border-r border-white/10'}`}>
-                <div className="mb-12">
-                  <span className="font-sans text-[10px] text-white/50 tracking-[0.2em] uppercase font-bold block mb-4">
-                    0{idx + 1} &mdash; {section.subtitle}
-                  </span>
-                  <h2 className="font-display text-4xl font-bold mb-6">{section.title}</h2>
-                  <p className="text-white/70 font-sans leading-relaxed text-sm">
-                    {section.description}
-                  </p>
-                </div>
-
-                <div className="pt-8 border-t border-white/10 mb-12">
-                  <span className="font-sans text-[10px] text-white/50 tracking-[0.2em] uppercase font-bold block mb-6">Parameters</span>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
-                    {section.features.map((feature, fIdx) => (
-                      <div key={fIdx} className="flex items-start text-white/80 font-sans text-xs tracking-wide">
-                        <div className="w-1.5 h-1.5 bg-[#FF6B2C] mt-1 mr-3 shrink-0" />
-                        {feature}
-                      </div>
-                    ))}
+              {/* Image Column */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+                className={`lg:col-span-7 relative group ${service.imageLeft ? 'lg:order-1' : 'lg:order-2'}`}
+              >
+                <div className="absolute inset-0 bg-[#FF6B2C]/5 translate-x-3 translate-y-3 -z-10 transition-transform duration-500 group-hover:translate-x-5 group-hover:translate-y-5" />
+                <div className="relative border border-[#07152E]/10 bg-white p-3 md:p-4 shadow-[0_20px_50px_rgba(7,21,46,0.06)]">
+                  <div className="relative overflow-hidden aspect-[16/10] bg-gray-50">
+                    <img 
+                      src={service.image} 
+                      alt={service.title}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#07152E]/10 to-transparent pointer-events-none" />
                   </div>
                 </div>
+              </motion.div>
 
-                <div className="pt-8 border-t border-white/10">
-                  <span className="font-sans text-[10px] text-white/50 tracking-[0.2em] uppercase font-bold block mb-3">Final Deliverable</span>
-                  <p className="text-white/90 text-sm italic font-serif leading-relaxed">"{section.deliverables}"</p>
+              {/* Content Column */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+                className={`lg:col-span-5 space-y-8 ${service.imageLeft ? 'lg:order-2' : 'lg:order-1'}`}
+              >
+                <div className="flex items-center space-x-4">
+                  <span className="font-sans text-[#FF6B2C] text-sm font-bold tracking-widest">{service.number}</span>
+                  <div className="w-8 h-[1px] bg-[#07152E]/15" />
+                  <span className="font-sans text-[#07152E]/50 text-xs font-bold uppercase tracking-[0.15em]">SERVICE DIVISION</span>
                 </div>
-              </div>
 
-              {/* Image Area */}
-              <div className={`w-full lg:w-[55%] relative overflow-hidden order-1 ${section.reverse ? 'lg:order-1' : 'lg:order-2'}`}>
-                <motion.div
-                  initial={{ scale: 1.1 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 1.5, ease: "easeOut" }}
-                  className="absolute inset-0"
-                >
-                  <img 
-                    src={section.image} 
-                    alt={section.title}
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-[2s]"
-                  />
-                  {/* Overlay Gradient */}
-                  <div className="absolute inset-0 bg-[#07152E]/20" />
-                </motion.div>
-              </div>
+                <h2 className="font-display text-3xl md:text-4xl text-[#07152E] font-bold tracking-tight">
+                  {service.title}
+                </h2>
+
+                <p className="font-sans text-[#07152E]/70 text-base md:text-lg font-light leading-relaxed">
+                  {service.description}
+                </p>
+
+                <div className="pt-8 border-t border-[#07152E]/10">
+                  <span className="font-sans text-[10px] text-[#07152E]/50 tracking-[0.2em] uppercase font-bold block mb-4">Core Standards</span>
+                  <ul className="space-y-3">
+                    {service.features.map((feature, fIdx) => (
+                      <li key={fIdx} className="flex items-center space-x-3 text-[#07152E] font-sans text-sm font-medium">
+                        <div className="w-5 h-5 rounded-full bg-[#FF6B2C]/10 flex items-center justify-center shrink-0">
+                          <Check className="w-3 h-3 text-[#FF6B2C]" strokeWidth={3} />
+                        </div>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
 
             </div>
-          </section>
-        ))}
-      </div>
-
-      {/* Final CTA */}
-      <section className="py-32 bg-white text-[#07152E] text-center px-6">
-        <div className="max-w-3xl mx-auto">
-          <span className="text-[#FF6B2C] text-[10px] font-bold uppercase tracking-[0.3em] block mb-6">Initiate</span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-8 tracking-tight">Ready to commence execution?</h2>
-          <p className="text-[#07152E]/60 mb-12 font-sans font-light text-lg">Consult with our structural engineering syndicate for an exact project feasibility parameters.</p>
-          <button className="px-10 py-5 bg-[#07152E] text-white font-sans font-bold text-[10px] uppercase tracking-[0.2em] hover:bg-[#FF6B2C] transition-colors">
-            Schedule Technical Consultation
-          </button>
+          ))}
         </div>
-      </section>
 
+      </div>
     </div>
   );
 }

@@ -6,9 +6,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [portalOpen, setPortalOpen] = useState(false);
-  const [portalPass, setPortalPass] = useState('');
-  const [portalError, setPortalError] = useState('');
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -36,16 +33,6 @@ export default function Header() {
 
   // Determine if top nav is over dark background
   const isDarkPage = ['/services', '/contact'].includes(location.pathname);
-
-  // Handle portal submit
-  const handlePortalAccess = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!portalPass) {
-      setPortalError('Signature passcode required.');
-    } else {
-      setPortalError('Security clearance failure: Passcode inactive or expired.');
-    }
-  };
 
   return (
     <>
@@ -103,11 +90,7 @@ export default function Header() {
           {/* Action Button: Client Portal */}
           <div className="hidden lg:flex items-center">
             <button
-              onClick={() => {
-                setPortalPass('');
-                setPortalError('');
-                setPortalOpen(true);
-              }}
+              onClick={() => handleNavigate('/contact')}
               className="px-8 py-3 text-[10px] font-sans font-bold uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer rounded-none border border-[#07152E] text-[#07152E] hover:bg-[#FF6B2C] hover:border-[#FF6B2C] hover:text-white"
             >
               Client Portal
@@ -152,12 +135,7 @@ export default function Header() {
               
               <div className="pt-4 flex flex-col">
                 <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    setPortalPass('');
-                    setPortalError('');
-                    setPortalOpen(true);
-                  }}
+                  onClick={() => handleNavigate('/contact')}
                   className="w-full bg-[#07152E] py-4 text-white font-sans font-bold text-[10px] uppercase tracking-[0.2em] rounded-none hover:bg-[#FF6B2C] transition-colors"
                 >
                   Client Portal
@@ -167,78 +145,6 @@ export default function Header() {
           )}
         </AnimatePresence>
       </header>
-
-      {/* Client Portal Modal */}
-      <AnimatePresence>
-        {portalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-[#07152E]/80 backdrop-blur-sm"
-          >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-white max-w-md w-full border border-[#07152E]/10 py-10 px-8 relative"
-            >
-              <button 
-                onClick={() => setPortalOpen(false)}
-                className="absolute top-6 right-6 text-[#07152E]/60 hover:text-[#07152E] transition-colors"
-                aria-label="Close Portal"
-              >
-                <X className="w-5 h-5" strokeWidth={1.5} />
-              </button>
-
-              <div className="flex flex-col items-center text-center">
-                <div className="w-12 h-12 bg-[#FF6B2C]/10 flex items-center justify-center text-[#FF6B2C] mb-6">
-                  <Shield className="w-6 h-6" strokeWidth={1.5} />
-                </div>
-                <h3 className="font-display text-2xl font-bold text-[#07152E] mb-2">Agaon Client Portal</h3>
-                <p className="text-[#07152E]/60 text-xs font-sans tracking-wide leading-relaxed max-w-xs mb-8">
-                  Enter your enterprise credentials or active signature passcode to access blueprints, telemetry logs, and live timelines.
-                </p>
-              </div>
-
-              <form onSubmit={handlePortalAccess} className="space-y-6">
-                <div className="relative group">
-                  <KeyRound className="absolute left-0 bottom-4 w-4 h-4 text-[#FF6B2C]" />
-                  <input 
-                    type="password" 
-                    value={portalPass}
-                    onChange={(e) => {
-                      setPortalPass(e.target.value);
-                      setPortalError('');
-                    }}
-                    placeholder="Signature Passcode"
-                    className="w-full bg-transparent border-b border-[#07152E]/10 pb-3 pl-8 text-sm focus:outline-none focus:border-[#FF6B2C] transition-colors rounded-none text-[#07152E] placeholder:text-[#07152E]/30 font-mono"
-                  />
-                </div>
-
-                {portalError && (
-                  <p className="text-red-500 font-sans text-xs tracking-wide leading-relaxed bg-red-50 p-3">
-                    {portalError}
-                  </p>
-                )}
-
-                <button 
-                  type="submit"
-                  className="w-full bg-[#07152E] text-white py-4 text-center font-sans font-bold text-[10px] uppercase tracking-[0.2em] transition-colors hover:bg-[#FF6B2C]"
-                >
-                  Verify Access Clearance
-                </button>
-              </form>
-
-              <div className="mt-8 pt-6 border-t border-[#07152E]/5 text-center">
-                <p className="text-[9px] font-sans text-[#07152E]/40 uppercase tracking-[0.15em] leading-relaxed">
-                  Lost credentials? Reach out to your project supervisor or email proposals@agaon.co.in
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 }

@@ -1,167 +1,196 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight } from 'lucide-react';
+import { Check, Shield, Lock } from 'lucide-react';
 
 export default function Estimator() {
-  const [city, setCity] = useState('');
+  const [city, setCity] = useState('Begusarai, BR');
   const [area, setArea] = useState('');
-  const [floors, setFloors] = useState('');
-  const [grade, setGrade] = useState('Premium');
+  const [floors, setFloors] = useState('Ground Only (G)');
+  const [quality, setQuality] = useState('Premium');
 
-  const calculatedCost = (Number(area) || 0) * (Number(floors) || 1) * (grade === 'Premium' ? 4500 : grade === 'Luxury' ? 6500 : 3000);
+  const handleCalculate = (e: React.FormEvent) => {
+    e.preventDefault();
+    // In a real app, this would process the estimate or proceed to a result page/modal.
+  };
 
   return (
-    <div className="pt-24 bg-[#F8F9FA] min-h-screen">
-      
-      {/* Header */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 border-b border-[#07152E]/10 mb-24">
-        <span className="text-[#FF6B2C] text-[10px] font-bold uppercase tracking-[0.3em] block mb-6">
-          Feasibility Model
-        </span>
-        <h1 className="font-display text-4xl md:text-6xl font-bold text-[#07152E] tracking-tight leading-[1.05] max-w-2xl">
-          Financial<br/>
-          <span className="font-serif italic font-medium text-[#07152E]/50">Architecture.</span>
-        </h1>
-      </div>
+    <div className="pt-24 pb-32 bg-gradient-to-b from-[#f8fafc] to-white min-h-screen relative overflow-hidden flex flex-col justify-center">
+      {/* Premium Texture */}
+      <div 
+        className="absolute inset-0 z-0 pointer-events-none opacity-[0.02]"
+        style={{
+          backgroundImage: `
+            linear-gradient(#07152E 1px, transparent 1px),
+            linear-gradient(90deg, #07152E 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px',
+        }}
+      />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-[#FF6B2C]/5 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pb-32">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full flex flex-col items-center">
+        
+        {/* Page Header */}
+        <div className="text-center mb-16 max-w-2xl">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center justify-center space-x-3 mb-6"
+          >
+            <div className="w-8 h-[1px] bg-[#FF6B2C]" />
+            <span className="text-[#FF6B2C] text-xs font-bold uppercase tracking-[0.2em]">BUDGET PLANNING</span>
+            <div className="w-8 h-[1px] bg-[#FF6B2C]" />
+          </motion.div>
+
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
+            className="font-display text-4xl md:text-6xl text-[#07152E] font-bold tracking-tight mb-6"
+          >
+            Construction Cost Estimator
+          </motion.h1>
           
-          {/* Main Calculator Form */}
-          <div className="lg:col-span-8 bg-white p-10 md:p-16 border border-[#07152E]/10">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
+            className="font-sans text-lg md:text-xl text-[#07152E]/60 font-light leading-relaxed"
+          >
+            Get a highly accurate preliminary budget for your project in seconds.
+          </motion.p>
+        </div>
+
+        {/* Estimator Card */}
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
+          className="w-full max-w-5xl bg-white border border-[#07152E]/10 shadow-[0_30px_80px_rgba(7,21,46,0.06)] rounded-sm overflow-hidden flex flex-col lg:flex-row"
+        >
+          {/* Left Panel: Form */}
+          <div className="lg:w-[60%] p-10 md:p-14 order-2 lg:order-1">
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-[#07152E] tracking-tight mb-10">
+              Project Details
+            </h2>
             
-            <div className="space-y-16">
+            <form onSubmit={handleCalculate} className="space-y-8">
               
-              {/* Region */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="md:col-span-1">
-                  <label className="text-[10px] uppercase font-bold tracking-[0.2em] text-[#07152E]">01. Region</label>
-                  <p className="text-[#07152E]/50 text-xs mt-2 leading-relaxed tracking-wide pr-4">Select the primary jurisdiction for the asset deployment.</p>
-                </div>
-                <div className="md:col-span-2">
-                  <select 
+              {/* Output Fields */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                {/* City Selection */}
+                <div className="flex flex-col space-y-2">
+                  <label className="font-sans text-xs uppercase font-bold tracking-[0.15em] text-[#07152E]/70">
+                    City of Construction
+                  </label>
+                  <input 
+                    type="text"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
-                    className="w-full bg-transparent border-b border-[#07152E]/20 pb-4 text-[#07152E] font-display text-2xl focus:outline-none focus:border-[#FF6B2C] transition-colors appearance-none cursor-pointer rounded-none"
-                  >
-                    <option value="" disabled>Select Jurisdiction</option>
-                    <option value="mumbai">Mumbai Metropolitan Region</option>
-                    <option value="delhi">National Capital Region (NCR)</option>
-                    <option value="bangalore">Bangalore Urban</option>
-                  </select>
+                    className="w-full bg-transparent border-b-2 border-[#07152E]/10 pb-3 pt-2 text-[#07152E] font-display text-xl font-medium focus:outline-none focus:border-[#FF6B2C] transition-colors"
+                  />
                 </div>
-              </div>
 
-              {/* Scale */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="md:col-span-1">
-                  <label className="text-[10px] uppercase font-bold tracking-[0.2em] text-[#07152E]">02. Footprint</label>
-                  <p className="text-[#07152E]/50 text-xs mt-2 leading-relaxed tracking-wide pr-4">Define the proposed structural footprint area.</p>
+                {/* Plot Area */}
+                <div className="flex flex-col space-y-2">
+                  <label className="font-sans text-xs uppercase font-bold tracking-[0.15em] text-[#07152E]/70">
+                    Plot Area (Sq. Ft.)
+                  </label>
+                  <input 
+                    type="number"
+                    value={area}
+                    onChange={(e) => setArea(e.target.value)}
+                    placeholder="e.g. 1500"
+                    className="w-full bg-transparent border-b-2 border-[#07152E]/10 pb-3 pt-2 text-[#07152E] font-display text-xl font-medium placeholder:text-[#07152E]/20 focus:outline-none focus:border-[#FF6B2C] transition-colors"
+                  />
                 </div>
-                <div className="md:col-span-2">
-                  <div className="relative">
-                    <input 
-                      type="number"
-                      value={area}
-                      onChange={(e) => setArea(e.target.value)}
-                      placeholder="e.g. 5000"
-                      className="w-full bg-transparent border-b border-[#07152E]/20 pb-4 text-[#07152E] font-display text-2xl focus:outline-none focus:border-[#FF6B2C] transition-colors rounded-none placeholder:text-[#07152E]/20"
-                    />
-                    <span className="absolute right-0 bottom-4 text-[#07152E]/40 font-mono text-sm uppercase tracking-widest pointer-events-none">Sq.Ft.</span>
-                  </div>
-                </div>
-              </div>
 
-              {/* Volume */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="md:col-span-1">
-                  <label className="text-[10px] uppercase font-bold tracking-[0.2em] text-[#07152E]">03. Volume</label>
-                  <p className="text-[#07152E]/50 text-xs mt-2 leading-relaxed tracking-wide pr-4">Vertical expansion parameters.</p>
-                </div>
-                <div className="md:col-span-2">
+                {/* Floors */}
+                <div className="flex flex-col space-y-2">
+                  <label className="font-sans text-xs uppercase font-bold tracking-[0.15em] text-[#07152E]/70">
+                    Number of Floors
+                  </label>
                   <select 
                     value={floors}
                     onChange={(e) => setFloors(e.target.value)}
-                    className="w-full bg-transparent border-b border-[#07152E]/20 pb-4 text-[#07152E] font-display text-2xl focus:outline-none focus:border-[#FF6B2C] transition-colors appearance-none cursor-pointer rounded-none"
+                    className="w-full bg-transparent border-b-2 border-[#07152E]/10 pb-3 pt-2 text-[#07152E] font-display text-xl font-medium focus:outline-none focus:border-[#FF6B2C] transition-colors appearance-none cursor-pointer rounded-none"
                   >
-                    <option value="" disabled>Select Floors</option>
-                    <option value="1">Ground Level Only</option>
-                    <option value="2">G + 1 Elevation</option>
-                    <option value="3">G + 2 Elevation</option>
-                    <option value="4">G + 3 Elevation</option>
-                    <option value="5">G + 4 Elevation</option>
+                    <option value="Ground Only (G)">Ground Only (G)</option>
+                    <option value="G + 1">G + 1</option>
+                    <option value="G + 2">G + 2</option>
+                    <option value="G + 3">G + 3</option>
+                  </select>
+                </div>
+
+                {/* Finish Quality */}
+                <div className="flex flex-col space-y-2">
+                  <label className="font-sans text-xs uppercase font-bold tracking-[0.15em] text-[#07152E]/70">
+                    Finish Quality
+                  </label>
+                  <select 
+                    value={quality}
+                    onChange={(e) => setQuality(e.target.value)}
+                    className="w-full bg-transparent border-b-2 border-[#07152E]/10 pb-3 pt-2 text-[#07152E] font-display text-xl font-medium focus:outline-none focus:border-[#FF6B2C] transition-colors appearance-none cursor-pointer rounded-none"
+                  >
+                    <option value="Standard">Standard</option>
+                    <option value="Premium">Premium</option>
+                    <option value="Luxury">Luxury</option>
                   </select>
                 </div>
               </div>
 
-              {/* Quality Index */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="md:col-span-1">
-                  <label className="text-[10px] uppercase font-bold tracking-[0.2em] text-[#07152E]">04. Delivery Class</label>
-                  <p className="text-[#07152E]/50 text-xs mt-2 leading-relaxed tracking-wide pr-4">Material specifications and tolerances.</p>
-                </div>
-                <div className="md:col-span-2 flex flex-col gap-4">
-                  {[
-                    { val: 'Standard', label: 'Standard Architectural', desc: 'Domestic materials, standard structural compliance.' },
-                    { val: 'Premium', label: 'Premium Grade', desc: 'Imported finishes, enhanced climatic resistance.' },
-                    { val: 'Luxury', label: 'Absolute Luxury', desc: 'Bespoke materials, smart integration, zero-tolerance execution.' }
-                  ].map(g => (
-                    <button
-                      key={g.val}
-                      onClick={() => setGrade(g.val)}
-                      className={`text-left p-6 border transition-all duration-300 ${
-                        grade === g.val
-                          ? 'border-[#07152E] bg-[#07152E] text-white'
-                          : 'border-[#07152E]/10 hover:border-[#07152E]/30 text-[#07152E]'
-                      }`}
-                    >
-                      <h4 className="font-display font-medium text-lg mb-2">{g.label}</h4>
-                      <p className={`text-xs ${grade === g.val ? 'text-white/70' : 'text-[#07152E]/50'} tracking-wide`}>{g.desc}</p>
-                    </button>
-                  ))}
+              {/* Submit CTA */}
+              <div className="pt-8">
+                <button 
+                  type="submit"
+                  className="w-full py-5 bg-[#07152E] text-white font-sans text-xs uppercase font-bold tracking-[0.2em] shadow-[0_15px_30px_rgba(7,21,46,0.15)] hover:shadow-[0_20px_40px_rgba(7,21,46,0.25)] hover:bg-[#FF6B2C] transition-all duration-300 transform hover:-translate-y-1"
+                >
+                  CALCULATE ESTIMATE
+                </button>
+                <div className="mt-6 flex items-center justify-center space-x-2 text-[#07152E]/50">
+                  <Lock className="w-4 h-4" />
+                  <span className="font-sans text-xs font-semibold tracking-wide uppercase">Secure & Confidential</span>
                 </div>
               </div>
 
-            </div>
-
+            </form>
           </div>
 
-          {/* Right Side Panel / Sticky Output */}
-          <div className="lg:col-span-4 lg:sticky lg:top-32 space-y-8">
-            <div className="bg-[#07152E] text-white p-10 border border-[#07152E]">
-              <span className="font-sans text-[10px] text-[#FF6B2C] tracking-[0.2em] uppercase font-bold block mb-4">Estimated CapEx</span>
+          {/* Right Panel: What's Included */}
+          <div className="lg:w-[40%] bg-gradient-to-br from-[#07152E] to-[#0a1e42] p-10 md:p-14 text-white relative flex flex-col justify-center order-1 lg:order-2">
+            <div className="absolute inset-0 bg-[#FF6B2C]/5 pointer-events-none" />
+            <div className="relative z-10">
+              <h2 className="font-display text-2xl md:text-3xl font-medium mb-10 text-white tracking-tight">
+                What's Included?
+              </h2>
               
-              <div className="font-display text-5xl md:text-6xl font-bold tracking-tight mb-8">
-                {calculatedCost > 0 ? `₹${(calculatedCost / 10000000).toFixed(2)}` : '₹0.00'}
-                {calculatedCost > 0 && <span className="text-xl ml-2 text-white/50 font-normal">Cr</span>}
-              </div>
-
-              <div className="border-t border-white/10 pt-8 space-y-4">
-                <h4 className="font-sans text-[10px] text-white/50 tracking-[0.2em] uppercase font-bold mb-6">Scope of Delivery</h4>
+              <ul className="space-y-6">
                 {[
-                  'Architectural Blueprinting',
-                  'Structural Engineering Analysis',
-                  'Foundation & Core Erection',
-                  'MEP Systems Integration',
-                  'Interior Finishes & Millwork',
-                  'Dedicated Project Management'
+                  'Architectural Design & 3D Elevations',
+                  'Structural Engineering & Approvals',
+                  'IS-Code Branded Materials',
+                  'Plumbing, Electrical & Finishing',
+                  'Dedicated Project Manager'
                 ].map((item, idx) => (
-                  <div key={idx} className="flex items-start text-xs text-white/80 tracking-wide leading-relaxed">
-                    <div className="w-1.5 h-1.5 bg-[#FF6B2C] mt-1 mr-4 shrink-0" />
-                    {item}
-                  </div>
+                  <li key={idx} className="flex items-start space-x-4">
+                    <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5 border border-white/20">
+                      <Check className="w-3 h-3 text-[#FF6B2C]" />
+                    </div>
+                    <span className="font-sans text-sm tracking-wide font-light leading-relaxed text-white/90">
+                      {item}
+                    </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
-
-            <button className="w-full bg-[#FF6B2C] text-white flex items-center justify-between p-6 uppercase font-bold text-[10px] tracking-[0.2em] transition-colors hover:bg-[#e05a22]">
-              <span>Request Formal Proposal</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
           </div>
 
-        </div>
+        </motion.div>
+
       </div>
     </div>
   );
 }
+
