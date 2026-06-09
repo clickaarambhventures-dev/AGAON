@@ -1,42 +1,102 @@
-import React from 'react';
-import { motion } from 'motion/react';
-import { Glasses, ArrowRight } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { ArrowRight, Glasses } from 'lucide-react';
 
 export default function VRCta() {
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'end start']
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ['-20%', '20%']);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.05, 1.1]);
+
   return (
-    <section className="py-32 relative overflow-hidden bg-[#07152E]">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section 
+      ref={containerRef}
+      className="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden"
+    >
+      {/* Parallax Background Image */}
+      <motion.div 
+        style={{ y, scale }}
+        className="absolute inset-[-10%] z-0"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2400"
+          alt="Luxury Modern Residence Evening VR Visualization"
+          referrerPolicy="no-referrer"
+          className="w-full h-full object-cover"
+        />
+      </motion.div>
+
+      {/* Cinematic Gradient Overlays */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#07152E] via-[#07152E]/60 to-transparent opacity-90" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#07152E]/80 via-transparent to-[#07152E]/80" />
+      <div className="absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(7,21,46,0.6)_100%)]" />
+
+      {/* Content Container */}
+      <div className="relative z-20 max-w-4xl mx-auto px-6 md:px-12 text-center flex flex-col items-center">
+        
+        {/* Animated Icon */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl flex items-center justify-center shadow-[0_0_40px_rgba(255,107,44,0.15)] mb-8"
+        >
+          <Glasses className="w-8 h-8 text-[#FF6B2C]" strokeWidth={1.5} />
+        </motion.div>
+
+        {/* Heading */}
+        <motion.h2 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="font-display text-5xl md:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-8"
+        >
+          See the Future.<br />
+          <span className="text-white/60 italic font-light">Literally.</span>
+        </motion.h2>
+
+        {/* Description */}
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          className="font-sans text-lg md:text-2xl text-white/80 font-light leading-relaxed max-w-2xl mb-12"
+        >
+          Take a test drive of your home in Virtual Reality before a single brick is laid.
+        </motion.p>
+
+        {/* CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+          className="relative inline-block group"
+        >
+          {/* Subtle glow effect around button */}
+          <div className="absolute inset-[-4px] bg-gradient-to-r from-[#FF6B2C] to-[#FF8B5C] rounded-full opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-700 pointer-events-none" />
           
-          <div className="order-2 lg:order-1 relative h-[600px] w-full bg-[#07152E] overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2400&q=80"
-              alt="VR Visualization"
-              referrerPolicy="no-referrer"
-              className="w-full h-full object-cover opacity-80"
-            />
-          </div>
-
-          <div className="order-1 lg:order-2">
-            <span className="text-[#FF6B2C] text-[10px] font-bold uppercase tracking-[0.3em] block mb-8">
-              Digital Twin Simulation
+          <button className="relative px-10 py-5 bg-white rounded-none overflow-hidden flex items-center space-x-6 border border-transparent hover:border-[#FF6B2C]/50 transition-all duration-500 shadow-[0_20px_40px_rgba(0,0,0,0.4)] group-hover:shadow-[0_20px_40px_rgba(255,107,44,0.2)] transform group-hover:-translate-y-1">
+            {/* Button Hover Background Reveal */}
+            <div className="absolute inset-0 bg-[#07152E] transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+            
+            <span className="relative z-10 font-sans font-bold text-xs uppercase tracking-[0.2em] text-[#07152E] group-hover:text-white transition-colors duration-300">
+              BOOK A VR CONSULTATION
             </span>
-            <h2 className="font-display text-4xl md:text-6xl font-bold tracking-tight text-white leading-[1.05] mb-8">
-              Simulate Reality<br/>
-              <span className="font-serif italic font-medium text-white/50">Before Excavation.</span>
-            </h2>
-            <p className="text-white/60 text-lg font-light leading-relaxed mb-12">
-              Experience your structural asset in 1:1 scale Virtual Reality. Traverse corridors, inspect lighting physics, and audit material selections telemetry before a single unit of capital is deployed on-site.
-            </p>
-            <div className="pt-8 border-t border-white/10">
-              <button className="px-8 py-5 bg-white text-[#07152E] flex items-center justify-between hover:bg-[#FF6B2C] hover:text-white transition-colors group">
-                <span className="font-sans font-bold text-[10px] uppercase tracking-[0.2em] mr-8">Schedule Simulation Call</span>
-                <ArrowRight className="w-4 h-4 text-[#07152E] group-hover:text-white" />
-              </button>
+            
+            <div className="relative z-10 w-8 h-8 rounded-full bg-[#07152E]/5 group-hover:bg-[#FF6B2C] flex items-center justify-center transition-colors duration-500">
+              <ArrowRight className="w-4 h-4 text-[#07152E] group-hover:text-white transform group-hover:translate-x-1 transition-all duration-300" />
             </div>
-          </div>
+          </button>
+        </motion.div>
 
-        </div>
       </div>
     </section>
   );

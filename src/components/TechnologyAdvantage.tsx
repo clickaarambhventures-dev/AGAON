@@ -1,83 +1,144 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { CheckCircle2, Shield, Activity, Users } from 'lucide-react';
+import { ShieldCheck, Smartphone } from 'lucide-react';
 
-const benefits = [
-  { title: 'Fixed Price Integrity', desc: 'No hidden costs, no escalations. Structural quotes are absolute and binding.', icon: Shield },
-  { title: 'Transparent Escrow', desc: 'Milestone-based release tied directly to verified civil progress.', icon: CheckCircle2 },
-  { title: 'Telemetry & Tracking', desc: 'Active site monitoring via remote feeds and daily drone mapping.', icon: Activity },
-  { title: 'Dedicated Command', desc: 'Single point of contact from mobilization to final client handover.', icon: Users }
+const bullets = [
+  "Guaranteed Price Protection with penalty-backed delivery.",
+  "Stage-wise transparent payments tied to actual progress.",
+  "24/7 Real-time tracking via your dedicated Client Portal."
 ];
 
 export default function TechnologyAdvantage() {
   return (
-    <section className="py-32 bg-white relative overflow-hidden border-t border-[#07152E]/10">
+    <section className="py-32 bg-[#0A1A3A] relative overflow-hidden">
+      {/* Blueprint / Architectural Grid Background */}
+      <div 
+        className="absolute inset-0 z-0 pointer-events-none opacity-[0.03] mix-blend-overlay"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.4) 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px',
+        }}
+      />
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.02]"
+        style={{
+          backgroundImage: `
+            radial-gradient(circle at 100% 0%, rgba(255, 107, 44, 0.15), transparent 40%),
+            radial-gradient(circle at 0% 100%, rgba(255, 255, 255, 0.05), transparent 40%)
+          `
+        }}
+      />
+
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           
+          {/* Left Side: Content */}
           <div className="space-y-12">
             <div>
-              <span className="text-[#FF6B2C] text-[10px] font-bold uppercase tracking-[0.2em] block mb-6">
-                The Agaon Advantage
-              </span>
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#07152E] leading-[1.1]">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="flex items-center space-x-3 mb-6"
+              >
+                <div className="w-8 h-[1px] bg-[#FF6B2C]" />
+                <span className="text-[#FF6B2C] text-xs font-bold uppercase tracking-[0.2em]">
+                  THE BUILDER-FOUNDER EDGE
+                </span>
+              </motion.div>
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1] mb-8"
+              >
                 Built on Technology.<br />
-                <span className="font-serif italic font-medium text-[#07152E]/60">Grounded in Reality.</span>
-              </h2>
+                <span className="text-white/60 font-light italic">Grounded in Reality.</span>
+              </motion.h2>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-white/70 font-sans text-lg lg:text-xl font-light leading-relaxed max-w-lg"
+              >
+                Most contractors use technology just for marketing. At Agaon, technology is baked into our foundation. We bridge the gap between complex engineering and customer peace of mind.
+              </motion.p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-12 pt-4">
-              {benefits.map((bg, idx) => (
+            <div className="space-y-6 pt-4 max-w-lg">
+              {bullets.map((bullet, idx) => (
                 <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  transition={{ duration: 0.5, delay: 0.3 + (idx * 0.1) }}
                   key={idx} 
-                  className="space-y-4"
+                  className="flex items-start space-x-4 group"
                 >
-                  <div className="w-8 h-8 flex items-center justify-center border-b-2 border-[#07152E]">
-                    <bg.icon className="w-4 h-4 text-[#07152E]" strokeWidth={1.5} />
+                  <div className="w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0 mt-1 group-hover:bg-[#FF6B2C]/20 group-hover:border-[#FF6B2C]/50 transition-colors duration-300">
+                    <ShieldCheck className="w-3 h-3 text-white/50 group-hover:text-[#FF6B2C] transition-colors" strokeWidth={2} />
                   </div>
-                  <h4 className="font-sans font-bold text-[#07152E] tracking-wide text-sm uppercase">{bg.title}</h4>
-                  <p className="text-[#07152E]/60 text-sm leading-relaxed font-light">{bg.desc}</p>
+                  <p className="text-white/80 text-base leading-relaxed font-sans">{bullet}</p>
                 </motion.div>
               ))}
             </div>
 
-            <button className="px-8 py-4 mt-4 bg-transparent border border-[#07152E] text-[#07152E] font-sans font-bold text-[10px] uppercase tracking-[0.2em] rounded-none hover:bg-[#07152E] hover:text-white transition-colors duration-300">
-              Discover Our Process
-            </button>
           </div>
 
+          {/* Right Side: Image with Floating Card */}
           <motion.div 
-            initial={{ opacity: 0, filter: "grayscale(100%)" }}
-            whileInView={{ opacity: 1, filter: "grayscale(20%)" }}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.2 }}
-            className="relative"
+            transition={{ duration: 1 }}
+            className="relative lg:ml-auto w-full max-w-md lg:max-w-none ml-6 lg:ml-0"
           >
-            <div className="aspect-[3/4] overflow-hidden relative">
-              <img 
+            <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-[#07152E]/50 aspect-[4/5] lg:aspect-[3/4] shadow-[0_20px_60px_rgba(0,0,0,0.5)] group/img">
+               <div className="absolute inset-0 bg-gradient-to-t from-[#0A1A3A] via-transparent to-transparent z-10 opacity-70" />
+               <img 
                 src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80" 
-                alt="Construction Site"
+                alt="Construction Site Engineering"
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover scale-105"
+                className="w-full h-full object-cover transform scale-105 group-hover/img:scale-100 transition-transform duration-[2s] ease-out"
               />
             </div>
 
-            {/* Architectural Annotation instead of floating glass card */}
-            <div className="absolute -left-6 md:-left-12 bottom-12 bg-white p-6 border border-[#07152E]/10 max-w-[280px]">
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-2 h-2 bg-[#FF6B2C]" />
-                <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#07152E] font-bold">
-                  Status: Active Site
-                </span>
-              </div>
-              <p className="text-sm font-display text-[#07152E] font-bold mb-1 uppercase tracking-wide">Sector 65 Corporate Park</p>
-              <p className="text-[10px] uppercase tracking-[0.1em] text-[#07152E]/50 font-sans">Phase 2: RC Core Pouring</p>
-            </div>
+            {/* Premium Floating Client App Card */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="absolute -left-6 lg:-left-16 bottom-[10%] bg-[#07152E]/60 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 md:p-8 flex items-center space-x-6 shadow-[0_30px_60px_rgba(0,0,0,0.4)] hover:bg-[#07152E]/80 transition-colors duration-500 overflow-hidden group/card z-20"
+            >
+               {/* Subtle background glow */}
+               <div className="absolute top-1/2 left-0 -translate-y-1/2 w-32 h-32 bg-[#FF6B2C]/10 blur-2xl rounded-full pointer-events-none opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
+               
+               <div className="w-16 h-16 bg-[#FF6B2C] rounded-[20px] flex items-center justify-center shrink-0 shadow-[0_10px_30px_rgba(255,107,44,0.4)] z-10 relative transition-transform duration-500 group-hover/card:scale-105">
+                 <Smartphone className="w-8 h-8 text-white stroke-[1.5]" />
+               </div>
+               
+               <div className="z-10 relative">
+                 <p className="font-display text-2xl font-bold text-white tracking-tight leading-none mb-2 group-hover/card:text-[#FF6B2C] transition-colors duration-300">
+                   Client App
+                 </p>
+                 <div className="flex items-center space-x-2">
+                   <div className="w-2 h-2 rounded-full border border-white/30 flex items-center justify-center p-[2px]">
+                     <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+                   </div>
+                   <h3 className="font-sans font-bold text-xs uppercase tracking-[0.2em] text-white/50">
+                     Live Updates
+                   </h3>
+                 </div>
+               </div>
+            </motion.div>
           </motion.div>
 
         </div>

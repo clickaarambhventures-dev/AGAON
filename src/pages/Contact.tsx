@@ -1,120 +1,213 @@
-import React from 'react';
-import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { Phone, Mail, MapPin, Download, ArrowRight, DownloadCloud, FileText } from 'lucide-react';
 
 export default function Contact() {
+  const [focusedInput, setFocusedInput] = useState<string | null>(null);
+
+  const contactMethods = [
+    {
+      title: 'Direct Line',
+      info: '+91 (0612) 250 1000',
+      icon: Phone,
+    },
+    {
+      title: 'Email Us',
+      info: 'hello@agaconstruction.com',
+      icon: Mail,
+    },
+    {
+      title: 'Patna Regional Office',
+      info: '101, Agaon Tower, Boring Road, Patna, Bihar 800001',
+      icon: MapPin,
+    }
+  ];
+
   return (
-    <div className="pt-24 bg-[#07152E] text-white min-h-screen">
-      
-      {/* Header */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 mb-12 border-b border-white/10">
-        <span className="text-[#FF6B2C] text-[10px] font-bold uppercase tracking-[0.3em] block mb-6">
-          Initiate Contact
-        </span>
-        <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] max-w-3xl mb-12">
-          Commence<br/>
-          <span className="font-serif italic font-medium text-white/50">Engagement.</span>
-        </h1>
-        <p className="text-white/60 text-lg max-w-xl font-light leading-relaxed">
-          Connect with our corporate syndicates for bespoke proposals, structural analysis, and feasibility models.
-        </p>
-      </div>
+    <div className="pt-24 min-h-screen bg-gradient-to-b from-slate-50 to-[#f8fafc] relative overflow-hidden">
+      {/* Subtle Grid Background */}
+      <div 
+        className="absolute inset-0 z-0 pointer-events-none opacity-[0.03]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0V0zm1 1h38v38H1V1z' fill='%23000000' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")`
+        }}
+      />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pb-32">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 relative z-10">
+        
+        {/* Top Hero Section */}
+        <div className="mb-20 text-center max-w-3xl mx-auto">
+          <span className="text-[#FF6B2C] font-semibold tracking-widest text-sm uppercase mb-4 block">
+            Get In Touch
+          </span>
+          <h1 className="font-display text-5xl md:text-7xl font-bold tracking-tight text-[#07152E]">
+            Let's Build Something Great.
+          </h1>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           
-          {/* Left Side Info */}
-          <div className="lg:col-span-5 space-y-16">
+          {/* Left Column */}
+          <div className="lg:col-span-5 space-y-8">
             
-            <div className="space-y-12">
-              <div className="group">
-                <span className="font-sans text-[10px] text-white/40 tracking-[0.2em] uppercase font-bold block mb-4 flex items-center">
-                  <MapPin className="w-3 h-3 mr-2" /> Global Headquarters
-                </span>
-                <p className="font-display text-2xl group-hover:text-[#FF6B2C] transition-colors cursor-pointer">
-                  Level 42, AGAON Tower<br/>
-                  BKC, Mumbai<br/>
-                  Maharashtra 400051
-                </p>
-              </div>
-
-              <div className="group">
-                <span className="font-sans text-[10px] text-white/40 tracking-[0.2em] uppercase font-bold block mb-4 flex items-center">
-                  <Phone className="w-3 h-3 mr-2" /> Direct Voice
-                </span>
-                <p className="font-display text-2xl group-hover:text-[#FF6B2C] transition-colors cursor-pointer">
-                  +91 (022) 4800 2424
-                </p>
-              </div>
-
-              <div className="group">
-                <span className="font-sans text-[10px] text-white/40 tracking-[0.2em] uppercase font-bold block mb-4 flex items-center">
-                  <Mail className="w-3 h-3 mr-2" /> Digital Inquiries
-                </span>
-                <p className="font-display text-2xl group-hover:text-[#FF6B2C] transition-colors cursor-pointer">
-                  proposals@agaon.co.in
-                </p>
-              </div>
+            <div className="space-y-6">
+              {contactMethods.map((method, idx) => (
+                <div 
+                  key={idx} 
+                  className="group relative bg-white rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(7,21,46,0.12)] transition-all duration-500 transform hover:-translate-y-2 flex items-start space-x-6 border border-slate-100 overflow-hidden"
+                >
+                  {/* Subtle accent line on hover */}
+                  <div className="absolute top-0 left-0 w-1 h-full bg-[#FF6B2C] transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+                  
+                  <div className="w-16 h-16 bg-[#07152E] rounded-2xl flex items-center justify-center shrink-0 shadow-inner group-hover:bg-[#FF6B2C] transition-colors duration-500">
+                    <method.icon className="w-7 h-7 text-white" strokeWidth={1.5} />
+                  </div>
+                  <div className="pt-1.5">
+                    <h4 className="font-sans font-bold text-xs tracking-[0.2em] text-[#07152E]/50 uppercase mb-2 group-hover:text-[#FF6B2C] transition-colors duration-300">
+                      {method.title}
+                    </h4>
+                    <p className="font-display text-xl font-medium text-[#07152E] leading-relaxed">
+                      {method.info}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
 
-            <div className="p-8 border border-white/10 bg-white/5">
-              <h4 className="font-sans text-[10px] text-white/50 tracking-[0.2em] uppercase font-bold block mb-4">Operations Status</h4>
-              <div className="flex items-center space-x-3 mb-2">
-                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-                <span className="font-display text-lg text-white">Active</span>
+            {/* Download Guide Card */}
+            <div className="relative overflow-hidden rounded-3xl mt-12 bg-gradient-to-br from-[#07152E] to-[#112a5a] p-8 shadow-[0_20px_40px_rgb(7,21,46,0.2)] group">
+              {/* Decorative architectural lines */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#FF6B2C]/20 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
+              
+              <div className="relative z-10">
+                <div className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center mb-6 border border-white/10 group-hover:bg-[#FF6B2C]/20 transition-colors duration-500">
+                  <FileText className="w-6 h-6 text-white" strokeWidth={1.5} />
+                </div>
+                <h3 className="font-display text-2xl font-bold text-white mb-3">
+                  Planning a Home?
+                </h3>
+                <p className="font-sans text-white/70 text-sm leading-relaxed mb-8">
+                  Download our comprehensive 2026 Home Construction Guide. Learn about modern materials, cost estimations, and architectural timelines.
+                </p>
+                <button className="flex items-center space-x-2 text-white bg-[#FF6B2C] px-6 py-3 rounded-xl font-sans font-semibold text-sm hover:bg-[#ff7b42] transition-colors shadow-[0_8px_20px_rgba(255,107,44,0.3)] w-fit hover:shadow-[0_12px_25px_rgba(255,107,44,0.4)]">
+                  <span>Download Guide</span>
+                  <DownloadCloud className="w-4 h-4 ml-2" strokeWidth={2} />
+                </button>
               </div>
-              <p className="text-white/50 text-xs font-sans tracking-wide">Business Hours: 09:00 — 19:00 IST</p>
             </div>
 
           </div>
 
-          {/* Right Side Form */}
+          {/* Right Column: Inquiry Form Card */}
           <div className="lg:col-span-7">
-            <h3 className="font-sans text-[10px] text-white/40 tracking-[0.2em] uppercase font-bold block mb-12">Encrypted Submission</h3>
-            
-            <form className="space-y-10" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div className="relative group">
-                  <input type="text" id="name" required className="w-full bg-transparent border-b border-white/20 pb-4 text-white font-sans text-sm focus:outline-none focus:border-[#FF6B2C] transition-colors peer placeholder-transparent" placeholder="Full Name" />
-                  <label htmlFor="name" className="absolute left-0 top-0 text-white/40 font-sans text-[10px] uppercase tracking-[0.2em] transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-0 peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-[#FF6B2C] pointer-events-none">
-                    Identified Entity Name
+            <div className="bg-white rounded-3xl p-10 md:p-12 shadow-[0_20px_60px_rgb(0,0,0,0.05)] border border-slate-100 relative">
+              <h3 className="font-display text-3xl font-bold text-[#07152E] mb-10">
+                Send an Inquiry
+              </h3>
+              
+              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Name Input */}
+                  <div className="space-y-2">
+                    <label htmlFor="fullName" className="font-sans text-xs font-semibold text-slate-500 uppercase tracking-wider ml-1">
+                      Full Name
+                    </label>
+                    <input 
+                      type="text" 
+                      id="fullName" 
+                      required
+                      onFocus={() => setFocusedInput('fullName')}
+                      onBlur={() => setFocusedInput(null)}
+                      className="w-full h-[56px] bg-slate-50 rounded-xl px-5 font-sans text-sm text-[#07152E] outline-none border border-transparent transition-all duration-300 focus:border-[#FF6B2C] focus:bg-white focus:shadow-[0_4px_20px_rgba(255,107,44,0.08)]"
+                      placeholder="John Doe"
+                    />
+                  </div>
+
+                  {/* Phone Input */}
+                  <div className="space-y-2">
+                    <label htmlFor="phone" className="font-sans text-xs font-semibold text-slate-500 uppercase tracking-wider ml-1">
+                      Phone Number
+                    </label>
+                    <input 
+                      type="tel" 
+                      id="phone" 
+                      required
+                      onFocus={() => setFocusedInput('phone')}
+                      onBlur={() => setFocusedInput(null)}
+                      className="w-full h-[56px] bg-slate-50 rounded-xl px-5 font-sans text-sm text-[#07152E] outline-none border border-transparent transition-all duration-300 focus:border-[#FF6B2C] focus:bg-white focus:shadow-[0_4px_20px_rgba(255,107,44,0.08)]"
+                      placeholder="+91 90000 00000"
+                    />
+                  </div>
+                </div>
+
+                {/* Email Input */}
+                <div className="space-y-2">
+                  <label htmlFor="email" className="font-sans text-xs font-semibold text-slate-500 uppercase tracking-wider ml-1">
+                    Email Address
                   </label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    required
+                    onFocus={() => setFocusedInput('email')}
+                    onBlur={() => setFocusedInput(null)}
+                    className="w-full h-[56px] bg-slate-50 rounded-xl px-5 font-sans text-sm text-[#07152E] outline-none border border-transparent transition-all duration-300 focus:border-[#FF6B2C] focus:bg-white focus:shadow-[0_4px_20px_rgba(255,107,44,0.08)]"
+                    placeholder="john@example.com"
+                  />
                 </div>
 
-                <div className="relative group">
-                  <input type="tel" id="phone" required className="w-full bg-transparent border-b border-white/20 pb-4 text-white font-sans text-sm focus:outline-none focus:border-[#FF6B2C] transition-colors peer placeholder-transparent" placeholder="Phone Number" />
-                  <label htmlFor="phone" className="absolute left-0 top-0 text-white/40 font-sans text-[10px] uppercase tracking-[0.2em] transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-0 peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-[#FF6B2C] pointer-events-none">
-                    Telephonic Contact
+                {/* Project Type Input */}
+                <div className="space-y-2">
+                  <label htmlFor="inquiryType" className="font-sans text-xs font-semibold text-slate-500 uppercase tracking-wider ml-1">
+                    Project Type
                   </label>
+                  <div className="relative">
+                    <select 
+                      id="inquiryType"
+                      onFocus={() => setFocusedInput('inquiryType')}
+                      onBlur={() => setFocusedInput(null)}
+                      className="w-full h-[56px] bg-slate-50 rounded-xl pl-5 pr-12 font-sans text-sm text-[#07152E] outline-none border border-transparent transition-all duration-300 focus:border-[#FF6B2C] focus:bg-white focus:shadow-[0_4px_20px_rgba(255,107,44,0.08)] appearance-none cursor-pointer"
+                    >
+                      <option value="">Select an option</option>
+                      <option value="residential">Residential</option>
+                      <option value="commercial">Commercial</option>
+                      <option value="renovation">Renovation</option>
+                      <option value="interior">Interior Design</option>
+                    </select>
+                    <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
+                      <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              <div className="relative group">
-                <select id="type" className="w-full bg-transparent border-b border-white/20 pb-4 text-white font-sans text-sm focus:outline-none focus:border-[#FF6B2C] transition-colors appearance-none cursor-pointer rounded-none">
-                  <option value="" className="bg-[#07152E]">Select Requirement Profile</option>
-                  <option value="res" className="bg-[#07152E]">Residential Asset Development</option>
-                  <option value="com" className="bg-[#07152E]">Commercial Infrastructure</option>
-                  <option value="fac" className="bg-[#07152E]">Kinetic Facade Engineering</option>
-                  <option value="int" className="bg-[#07152E]">Interior Architecture Systems</option>
-                </select>
-                <div className="absolute right-0 top-0 pointer-events-none">
-                  <svg className="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                {/* Message Input */}
+                <div className="space-y-2">
+                  <label htmlFor="message" className="font-sans text-xs font-semibold text-slate-500 uppercase tracking-wider ml-1">
+                    Message
+                  </label>
+                  <textarea 
+                    id="message" 
+                    rows={4}
+                    required
+                    onFocus={() => setFocusedInput('message')}
+                    onBlur={() => setFocusedInput(null)}
+                    className="w-full bg-slate-50 rounded-xl p-5 font-sans text-sm text-[#07152E] outline-none border border-transparent transition-all duration-300 focus:border-[#FF6B2C] focus:bg-white focus:shadow-[0_4px_20px_rgba(255,107,44,0.08)] resize-none"
+                    placeholder="Tell us about your project requirements..."
+                  ></textarea>
                 </div>
-              </div>
 
-              <div className="relative group mt-16 pt-8">
-                <textarea id="message" rows={4} required className="w-full bg-transparent border-b border-white/20 pb-4 text-white font-sans text-sm focus:outline-none focus:border-[#FF6B2C] transition-colors peer placeholder-transparent resize-none" placeholder="Message"></textarea>
-                <label htmlFor="message" className="absolute left-0 top-8 text-white/40 font-sans text-[10px] uppercase tracking-[0.2em] transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:top-8 peer-focus:top-0 peer-focus:text-[10px] peer-focus:text-[#FF6B2C] pointer-events-none">
-                  Detailed Operational Requirement
-                </label>
-              </div>
-
-              <div className="pt-8 text-right">
-                <button type="submit" className="px-10 py-5 bg-white text-[#07152E] flex items-center justify-between ml-auto hover:bg-[#FF6B2C] hover:text-white transition-colors group">
-                  <span className="font-sans font-bold text-[10px] uppercase tracking-[0.2em] mr-8">Transmit Packet</span>
-                  <ArrowRight className="w-4 h-4 text-[#07152E] group-hover:text-white" strokeWidth={1.5} />
-                </button>
-              </div>
-            </form>
+                {/* Submit Button */}
+                <div className="pt-6">
+                  <button 
+                    type="submit" 
+                    className="w-full sm:w-auto px-10 h-[56px] bg-[#07152E] text-white rounded-xl font-sans font-bold text-sm tracking-wide flex items-center justify-center hover:bg-[#FF6B2C] transition-all duration-300 hover:shadow-[0_8px_25px_rgba(255,107,44,0.35)] transform hover:-translate-y-1 group"
+                  >
+                    <span>Send Message</span>
+                    <ArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform" strokeWidth={2} />
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
 
         </div>
@@ -122,3 +215,4 @@ export default function Contact() {
     </div>
   );
 }
+

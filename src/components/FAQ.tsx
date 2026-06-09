@@ -3,7 +3,7 @@ import { Plus, Minus } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 const faqs = [
-  { q: 'How accurate is the estimate?', a: 'Our dynamic engine utilizes 5D BIM and real-time commodity indices to provide a structural estimate within a 5% margin of actual costs. Once contracted, the cost is absolutely fixed.' },
+  { q: 'How accurate is the estimate?', a: 'Our initial estimate is highly accurate, leveraging technology and current market rates. Once the site is inspected and designs are finalized, we provide a 100% fixed-cost agreement to prevent any budget overruns.' },
   { q: 'How do you ensure zero delays?', a: 'We employ rigorous critical-path planning alongside dedicated procurement teams that secure materials months in advance, isolating your project from local supply chain fluctuations.' },
   { q: 'Can I track my project remotely?', a: 'Yes. Our proprietary client portal gives you 24/7 access to live CCTV site feeds, automated drone progression scanning, and digitized billing milestones.' },
   { q: 'Do you handle approvals?', a: 'We handle comprehensive, end-to-end statutory compliances, structural clearances, environmental zoning permissions, and local municipality NOCs before breaking ground.' },
@@ -26,7 +26,7 @@ export default function FAQ() {
             Clarity in construction.
           </h2>
           <p className="text-[#07152E]/60 font-sans text-sm font-light leading-relaxed mb-8 max-w-sm">
-            We believe an informed client is a powerful partner. Here is everything you need to know about our contracting standards.
+            Clear answers to help you make informed decisions about your construction journey.
           </p>
         </div>
 

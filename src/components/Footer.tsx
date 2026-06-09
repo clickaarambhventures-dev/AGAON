@@ -25,86 +25,26 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 lg:gap-24 mb-24 md:mb-32">
           
           <div className="col-span-2 md:col-span-1 space-y-8">
-            <h4 className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#FF6B2C] font-bold">Office</h4>
+            <h4 className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#FF6B2C] font-bold">AGAON CONSTRUCTION.</h4>
             <div className="text-white/60 font-sans text-sm leading-relaxed">
-              Level 42, Signature Tower,<br />
-              BKC, Mumbai 400051<br />
-              India
+              Engineering Your Vision. Delivering Absolute Certainty. The smart way to build your dream project in India.
             </div>
             <div className="text-white font-sans text-sm tracking-wide">
-              info@agaonconstruction.in
+              +91 8051911111
             </div>
           </div>
 
           <div>
-            <h4 className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#FF6B2C] font-bold mb-8">Navigation</h4>
+            <h4 className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#FF6B2C] font-bold mb-8">Company</h4>
             <ul className="space-y-4 font-sans text-sm text-white/60">
               <li>
                 <button onClick={() => handleNavigate('/about')} className="hover:text-white transition-colors cursor-pointer text-left">
-                  Firm Profile
-                </button>
-              </li>
-              <li>
-                <button onClick={() => handleNavigate('/about')} className="hover:text-white transition-colors cursor-pointer text-left">
-                  Executive Team
+                  About Agaon
                 </button>
               </li>
               <li>
                 <button onClick={() => handleNavigate('/portfolio')} className="hover:text-white transition-colors cursor-pointer text-left">
-                  Our Portfolio
-                </button>
-              </li>
-              <li>
-                <button onClick={() => handleNavigate('/contact')} className="hover:text-white transition-colors cursor-pointer text-left">
-                  Join Us
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#FF6B2C] font-bold mb-8">Disciplines</h4>
-            <ul className="space-y-4 font-sans text-sm text-white/60">
-              <li>
-                <button onClick={() => handleNavigate('/services')} className="hover:text-white transition-colors cursor-pointer text-left">
-                  Residential
-                </button>
-              </li>
-              <li>
-                <button onClick={() => handleNavigate('/services')} className="hover:text-white transition-colors cursor-pointer text-left">
-                  Commercial
-                </button>
-              </li>
-              <li>
-                <button onClick={() => handleNavigate('/services')} className="hover:text-white transition-colors cursor-pointer text-left">
-                  Facades
-                </button>
-              </li>
-              <li>
-                <button onClick={() => handleNavigate('/services')} className="hover:text-white transition-colors cursor-pointer text-left">
-                  Interiors
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#FF6B2C] font-bold mb-8">Tools</h4>
-            <ul className="space-y-4 font-sans text-sm text-white/60">
-              <li>
-                <button onClick={() => {
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                  // This opens the portal modal on Header since Header is global
-                  const portalBtn = document.querySelector('button:contains("Client Portal")') as HTMLButtonElement;
-                  if (portalBtn) {
-                    portalBtn.click();
-                  } else {
-                    const buttons = Array.from(document.querySelectorAll('button'));
-                    const target = buttons.find(b => b.textContent?.includes('Client Portal'));
-                    if (target) target.click();
-                  }
-                }} className="hover:text-white transition-colors cursor-pointer text-left">
-                  Client Portal Login
+                  Project Portfolio
                 </button>
               </li>
               <li>
@@ -113,9 +53,46 @@ export default function Footer() {
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNavigate('/about')} className="hover:text-white transition-colors cursor-pointer text-left">
-                  Quality Control Manual
+                <button onClick={() => handleNavigate('/contact')} className="hover:text-white transition-colors cursor-pointer text-left">
+                  Contact Us
                 </button>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#FF6B2C] font-bold mb-8">Services</h4>
+            <ul className="space-y-4 font-sans text-sm text-white/60">
+              <li>
+                <button onClick={() => handleNavigate('/services')} className="hover:text-white transition-colors cursor-pointer text-left">
+                  Residential Construction
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNavigate('/services')} className="hover:text-white transition-colors cursor-pointer text-left">
+                  Commercial Builders
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNavigate('/services')} className="hover:text-white transition-colors cursor-pointer text-left">
+                  Interior Architecture
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNavigate('/services')} className="hover:text-white transition-colors cursor-pointer text-left">
+                  Facade Engineering
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#FF6B2C] font-bold mb-8">Regional Office</h4>
+            <ul className="space-y-4 font-sans text-sm text-white/60">
+              <li className="font-bold text-white">Patna Regional Office</li>
+              <li className="leading-relaxed">
+                Boring Road,<br />
+                Patna, Bihar 800001
               </li>
             </ul>
           </div>
@@ -124,17 +101,14 @@ export default function Footer() {
 
         {/* Bottom Legal */}
         <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 font-sans text-[10px] uppercase tracking-[0.2em] text-white/40">
-          <p>&copy; 2026 AGAON CORP. ALL RIGHTS RESERVED.</p>
+          <p>&copy; 2026 Agaon Construction. All rights reserved.</p>
           <div className="flex gap-8">
             <button onClick={() => handleNavigate('/about')} className="hover:text-white transition-colors cursor-pointer">
-              Privacy
+              Privacy Policy
             </button>
             <button onClick={() => handleNavigate('/about')} className="hover:text-white transition-colors cursor-pointer">
-              Legal Terms
+              Terms of Service
             </button>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-              LinkedIn
-            </a>
           </div>
         </div>
 
