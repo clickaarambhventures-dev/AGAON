@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronRight, ChevronLeft, Quote } from "lucide-react";
+import { ChevronRight, ChevronLeft, Quote, User } from "lucide-react";
 
 const testimonials = [
   {
@@ -8,37 +8,59 @@ const testimonials = [
     role: "Property Investor",
     location: "Mumbai",
     text: "Agaon Construction delivered our commercial high-rise three months ahead of schedule. Their transparency in pricing and zero cost overruns made a massive difference to our bottom line.",
-    image: "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=200",
+    image: "/1.png",
   },
   {
     name: "Priya Verma",
     role: "Homeowner",
     location: "Delhi",
     text: "Building our dream home was stress-free. The attention to detail from the foundation to the final finish was impeccable. They kept us updated every single day.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200",
+    image: "/2.png",
   },
   {
     name: "Ankit Singh",
     role: "Managing Director",
     location: "Pune",
     text: "The quality of materials used and the professionalism of their on-site team is unmatched. Agaon doesn't just build structures; they engineer certainty and trust.",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=200",
+    image: "/3.png",
   },
   {
     name: "Sneha Kapoor",
     role: "Architect",
     location: "Bangalore",
     text: "As an architect, I am extremely particular about execution. Agaon's structural precision and ability to perfectly translate complex designs into reality is outstanding.",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200",
+    image: "/4.png",
   },
   {
     name: "Arjun Mehta",
     role: "Retail Business Owner",
     location: "Hyderabad",
     text: "Our entire retail chain revamp was handled by Agaon. Their project management is phenomenal, ensuring no disruptions while maintaining the highest safety standards.",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=200",
+    image: "/5.png",
   }
 ];
+
+const TestimonialAvatar = ({ src, alt }: { src: string; alt: string }) => {
+  const [error, setError] = useState(false);
+  
+  if (error) {
+    return (
+      <div className="w-14 h-14 rounded-full border-2 border-[#111844]/5 flex-shrink-0 mr-4 bg-slate-100 flex items-center justify-center">
+        <User className="w-6 h-6 text-slate-400" />
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      onError={() => setError(true)}
+      className="w-14 h-14 rounded-full object-cover border-2 border-[#111844]/5 flex-shrink-0 mr-4"
+    />
+  );
+};
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -162,13 +184,7 @@ export default function Testimonials() {
                        "{t.text}"
                     </p>
                     <div className="flex items-center border-t border-[#111844]/10 pt-6 mt-auto">
-                       <img
-                         src={t.image}
-                         alt={t.name}
-                         loading="lazy"
-                         referrerPolicy="no-referrer"
-                         className="w-14 h-14 rounded-full object-cover border-2 border-[#111844]/5 flex-shrink-0 mr-4"
-                       />
+                       <TestimonialAvatar src={t.image} alt={t.name} />
                        <div className="min-w-0">
                          <h4 className="font-display text-[#111844] font-bold text-lg leading-tight truncate">
                            {t.name}
