@@ -14,10 +14,11 @@ export default function Footer() {
         {/* Top Massive Typography */}{" "}
         <div className="mb-24 md:mb-32">
           {" "}
-          <h2 className="font-display text-[clamp(4.5rem,15vw,10rem)] font-extrabold text-white tracking-tighter leading-none mb-6">
-            {" "}
-            AGAON{" "}
-          </h2>{" "}
+          <img 
+            src="/logo.png" 
+            alt="Agaon Construction" 
+            className="h-auto w-full max-w-[min(60vw,600px)] object-contain brightness-0 invert mb-12"
+          />
           <div className="w-full h-[1px] bg-white/20" />{" "}
         </div>{" "}
         {/* Middle Links */}{" "}

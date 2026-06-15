@@ -53,15 +53,11 @@ export default function Header() {
             className="flex items-center gap-3 cursor-pointer group"
             onClick={() => handleNavigate('/')}
           >
-            <div className={`w-8 h-8 flex items-center justify-center rounded-none font-sans font-bold text-lg tracking-tight transition-all duration-300 group-hover:scale-110 ${!isScrolled ? 'bg-white text-[#111844]' : 'bg-[#111844] text-white'}`}>
-              A
-            </div>
-            <span className={`text-xl font-display font-semibold tracking-widest uppercase transition-colors duration-300 select-none ${!isScrolled ? 'text-white' : 'text-[#111844]'}`}>
-              Agaon
-              <span className={`font-sans font-light text-sm tracking-widest ml-2 hidden sm:inline ${!isScrolled ? 'text-[#EAE0CF]/70' : 'text-[#4B5694]'}`}>
-                CONSTRUCTION
-              </span>
-            </span>
+            <img 
+              src="/logo.png" 
+              alt="Agaon Construction" 
+              className={`h-10 sm:h-12 w-auto object-contain transition-all duration-300 ${!isScrolled ? 'brightness-0 invert' : ''}`}
+            />
           </div>
 
           <nav className="hidden lg:flex gap-10 text-sm font-sans font-medium tracking-widest uppercase">
