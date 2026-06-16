@@ -11,30 +11,25 @@ export default function Footer() {
       {" "}
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col h-full">
         {" "}
-        {/* Top Massive Typography */}{" "}
-        <div className="mb-24 md:mb-32">
-          {" "}
-          <img 
-            src="/logo.png" 
-            alt="Agaon Construction" 
-            className="h-auto w-full max-w-[min(60vw,600px)] object-contain brightness-0 invert mb-12"
-          />
-          <div className="w-full h-[1px] bg-white/20" />{" "}
-        </div>{" "}
         {/* Middle Links */}{" "}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 lg:gap-24 mb-24 md:mb-32">
           {" "}
-          <div className="col-span-2 md:col-span-1 space-y-8">
+          <div className="col-span-2 md:col-span-1 space-y-6">
             {" "}
+            <img 
+              src="/logo.png" 
+              alt="Agaon Construction" 
+              className="h-auto w-32 md:w-40 object-contain brightness-0 invert"
+            />
             <h4 className="font-sans text-sm uppercase tracking-widest text-[#4B5694] font-bold">
               AGAON CONSTRUCTION.
             </h4>{" "}
-            <div className="text-white/60 font-sans text-sm leading-relaxed">
+            <div className="text-white/60 font-sans text-xs leading-relaxed">
               {" "}
               Engineering Your Vision. Delivering Absolute Certainty. The smart
               way to build your dream project in India.{" "}
             </div>{" "}
-            <div className="text-white font-sans text-sm tracking-wide">
+            <div className="text-white font-sans text-xs tracking-wide">
               {" "}
               +91 80519 11111{" "}
               <br/>
