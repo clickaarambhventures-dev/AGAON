@@ -159,26 +159,40 @@ export default function Footer() {
           </div>{" "}
         </div>{" "}
         {/* Bottom Legal */}{" "}
-        <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 font-sans text-sm uppercase tracking-widest text-white/40">
-          {" "}
-          <p>&copy; 2026 Agaon Construction. All rights reserved.</p>{" "}
-          <div className="flex gap-8">
-            {" "}
-            <button
-              onClick={() => handleNavigate("/about")}
-              className="hover:text-white transition-colors cursor-pointer"
-            >
+        <div className="border-t border-white/20 pt-8 flex flex-col gap-8 font-sans text-sm uppercase tracking-widest text-white/40">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="text-center md:text-left">&copy; 2026 Agaon Construction. All rights reserved.</p>{" "}
+            <div className="flex gap-8">
               {" "}
-              Privacy Policy{" "}
-            </button>{" "}
-            <button
-              onClick={() => handleNavigate("/about")}
-              className="hover:text-white transition-colors cursor-pointer"
-            >
-              {" "}
-              Terms of Service{" "}
-            </button>{" "}
+              <button
+                onClick={() => handleNavigate("/about")}
+                className="hover:text-white transition-colors cursor-pointer"
+              >
+                {" "}
+                Privacy Policy{" "}
+              </button>{" "}
+              <button
+                onClick={() => handleNavigate("/about")}
+                className="hover:text-white transition-colors cursor-pointer"
+              >
+                {" "}
+                Terms of Service{" "}
+              </button>{" "}
+            </div>{" "}
           </div>{" "}
+          <div className="text-center w-full pt-4 md:pt-2">
+            <p className="normal-case tracking-wide text-xs text-white/40">
+              Developed by{" "}
+              <a 
+                href="https://www.clickaarambh.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-white/60 hover:text-white transition-colors font-medium"
+              >
+                Click Aarambh Ventures
+              </a>
+            </p>
+          </div>
         </div>{" "}
       </div>{" "}
     </footer>
